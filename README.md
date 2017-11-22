@@ -14,6 +14,11 @@ cd dotfiles
 sudo ./install.sh
 ```
 
+### Screenshots
+![Zsh Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-zsh.png)
+
+![Vim Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-vim.png)
+
 ### Contents
 
 * Zsh configuration (`~/.zshrc`)
