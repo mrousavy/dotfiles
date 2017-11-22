@@ -2,7 +2,13 @@
 
 
 ### Install
+First you'll need zsh:
+```sh
+sudo apt update && sudo apt install zsh && zsh
 ```
+
+Download and run the install script:
+```sh
 git clone http://github.com/mrousavy/dotfiles
 cd dotfiles
 sudo ./install.sh
