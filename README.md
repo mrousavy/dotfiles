@@ -22,6 +22,7 @@ sudo ./install.sh
 ### Contents
 
 * KDE Konsole profile and config
+* KDE KWin settings
 * Zsh configuration (`~/.zshrc`)
 * Vim configuration (`~/.vimrc`)
 * Oh-My-Zsh custom key-bindings (`~/.oh-my-zsh/custom/keys.sh`)

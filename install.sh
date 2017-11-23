@@ -39,3 +39,6 @@ cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
 cp .local/share/konsole/zsh.profile ~/.local/share/konsole/zsh.profile
 cp .config/konsolerc ~/.config/konsolerc
 
+# Copy over KWin settings [KDE]
+cp .config/kwinrc ~/.config/kwinrc
+
