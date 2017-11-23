@@ -34,3 +34,8 @@ cp .vimrc ~/.vimrc
 # Copy over custom scripts
 cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
 cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
+
+# Copy over Konsole settings [KDE]
+cp .local/share/konsole/zsh.profile ~/.local/share/konsole/zsh.profile
+cp .config/konsolerc ~/.config/konsolerc
+
