@@ -1,0 +1,22 @@
+[Desktop Entry]
+DefaultProfile=zsh.profile
+
+[Favorite Profiles]
+Favorites=zsh.profile
+
+[KonsoleWindow]
+SaveGeometryOnExit=false
+ShowMenuBarByDefault=false
+
+[MainWindow]
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAACdcAAAWEAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+
+[Notification Messages]
+CloseAllEmptyTabs=true
+CloseAllTabs=true
+ShowPasteHugeTextWarning=false
+
+[TabBar]
+TabBarVisibility=ShowTabBarWhenNeeded
