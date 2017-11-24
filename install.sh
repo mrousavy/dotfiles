@@ -7,7 +7,7 @@ apt update
 apt upgrade
 
 # Install Reqired packages
-apt install wmctrl #zsh
+apt install wmctrl git build-essential python3 #zsh
 
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -30,6 +30,31 @@ cp .zshrc ~/.zshrc
 mv ~/.vimrc ~/.vimrc_backup
 # Copy over .vimrc
 cp .vimrc ~/.vimrc
+
+
+#### VIM PLUGINS ####
+
+# Pathogen Vim
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# NERDTree
+git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+
+# YouCompleteMe
+cd ~/.vim/bundle
+git clone https://github.com/Valloric/YouCompleteMe.git
+cd YouCompleteMe
+git submodule update --init --recursive
+./install.sh --clang-completer
+
+# SurroundMe
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-surround.git
+
+# FugitiveVim (Git)
+cd ~/.vim/bundle
+git clone https://github.com/tpope/vim-fugitive.git
 
 # Copy over custom scripts
 cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
