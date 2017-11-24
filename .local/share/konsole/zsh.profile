@@ -1,13 +1,14 @@
 [Appearance]
 ColorScheme=Breeze
-Font=Hack,11,-1,7,50,0,0,0,0,0
+Font=Hack,11,-1,5,50,0,0,0,0,0
 
 [Cursor Options]
-CursorShape=1
+CursorShape=0
 UseCustomCursorColor=false
 
 [General]
 Command=/bin/zsh
+LocalTabTitleFormat=%d : %n
 Name=zsh
 Parent=FALLBACK/
 TerminalColumns=100
