@@ -4,6 +4,10 @@ DefaultProfile=zsh.profile
 [Favorite Profiles]
 Favorites=zsh.profile
 
+[KFileDialog Settings]
+Recent Files[$e]=nature.jpg,file:$HOME/Pictures/splash_red.jpg,file:$HOME/Pictures/nature.jpg
+Recent URLs[$e]=file:$HOME/Pictures/
+
 [KonsoleWindow]
 SaveGeometryOnExit=false
 ShowMenuBarByDefault=false
