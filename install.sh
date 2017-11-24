@@ -12,7 +12,7 @@ apt update
 apt upgrade
 
 # Install Reqired packages
-apt install wmctrl git build-essential cmake python3 python3-dev python-dev #zsh
+apt install wmctrl git build-essential cmake python3 python3-dev #zsh
 
 #### ZSH ####
 
@@ -55,7 +55,7 @@ cd ~/.vim/bundle
 git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive
-./install.py --clang-completer --cs-completer
+./install.py --clang-completer
 
 # SurroundMe
 cd ~/.vim/bundle
