@@ -2,12 +2,19 @@
 
 # SCRIPT TO INSTALL MY IMPORTANT DOTFILES AND PLUGINS TO USER DIR (RUN WITH SUDO)
 
+if [ "$(id -u)" != "0" ]; then
+	echo "This script must be run as root (use 'su root' or 'sudo')" 1>&2
+	exit 1
+fi
+
 # Update sources
 apt update
 apt upgrade
 
 # Install Reqired packages
-apt install wmctrl git build-essential python3 #zsh
+apt install wmctrl git build-essential cmake python3 python3-dev python-dev #zsh
+
+#### ZSH ####
 
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -25,6 +32,8 @@ curl https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/m
 mv ~/.zshrc ~/.zshrc_backup
 # Copy over .zshrc
 cp .zshrc ~/.zshrc
+# Update for now
+source ~/.zshrc
 
 # Backup old .vimrc
 mv ~/.vimrc ~/.vimrc_backup
@@ -46,7 +55,7 @@ cd ~/.vim/bundle
 git clone https://github.com/Valloric/YouCompleteMe.git
 cd YouCompleteMe
 git submodule update --init --recursive
-./install.sh --clang-completer
+./install.py --clang-completer --cs-completer
 
 # SurroundMe
 cd ~/.vim/bundle
@@ -55,6 +64,9 @@ git clone git://github.com/tpope/vim-surround.git
 # FugitiveVim (Git)
 cd ~/.vim/bundle
 git clone https://github.com/tpope/vim-fugitive.git
+
+
+#### KDE ####
 
 # Copy over custom scripts
 cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
