@@ -10,6 +10,10 @@ CASE_SENSITIVE="false"
 # AUTO COMMAND CORRECTION
 ENABLE_CORRECTION="true"
 
+# HISTORY
+SAVEHIST=100
+HISTSIZE=50
+
 # COMPLETION LOADING INDICATOR
 # [DISABLED, BECAUSE THIS CAUSES BULLETTRAIN TO DISAPPEAR]
 #COMPLETION_WAITING_DOTS="true"
@@ -25,8 +29,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source $ZSH/custom/keys.sh
 
-# PIPES SCREENSAVER
+# SOME ALIASES
 alias pipes="~/Documents/pipes.sh"
+alias python=python3
 
 # CUSTOM CD (CD & LS)
 c() {
