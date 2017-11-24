@@ -3,11 +3,11 @@
 # SCRIPT TO INSTALL MY IMPORTANT DOTFILES AND PLUGINS TO USER DIR (RUN WITH SUDO)
 
 # Update sources
-#apt update
-#apt upgrade
+apt update
+apt upgrade
 
-# Install Zsh
-#apt install zsh
+# Install Reqired packages
+apt install wmctrl #zsh
 
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
