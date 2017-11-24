@@ -34,6 +34,7 @@ cp .vimrc ~/.vimrc
 # Copy over custom scripts
 cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
 cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
+cp run-focus /usr/local/bin/run-focus && chmod a+x /usr/local/bin/run-focus
 
 # Copy over Konsole settings [KDE]
 cp .local/share/konsole/zsh.profile ~/.local/share/konsole/zsh.profile
