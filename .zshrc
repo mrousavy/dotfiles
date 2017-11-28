@@ -40,6 +40,11 @@ c() {
 }
 alias cd="c"
 
+# GOOGLE FUNCTION
+function google() { 
+	chromium "http://www.google.com/search?q= $1"; 
+}
+
 # FUZZY HISTORY CMD SEARCHING [ARR-UP]
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
 	autoload -U up-line-or-beginning-search
