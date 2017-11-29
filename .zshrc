@@ -42,7 +42,7 @@ alias cd="c"
 
 # GOOGLE FUNCTION
 function google() { 
-	chromium "http://www.google.com/search?q= $1"; 
+	chromium "http://www.google.com/search?q= $1" &; 
 }
 
 # FUZZY HISTORY CMD SEARCHING [ARR-UP]

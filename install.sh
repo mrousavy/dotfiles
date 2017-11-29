@@ -26,6 +26,7 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
 
 # Zsh-Bullet Train theme
+mkdir $ZSH/custom/themes
 curl https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o $ZSH/custom/themes/bullet-train.zsh-theme
 
 # Backup old .zshrc
