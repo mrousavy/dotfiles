@@ -12,7 +12,7 @@ apt update
 apt upgrade
 
 # Install Reqired packages
-apt install wmctrl git build-essential cmake python3 python3-dev #zsh
+apt install wmctrl git build-essential cmake python3 python3-dev python3-pip #zsh
 
 #### ZSH ####
 
@@ -66,6 +66,9 @@ git clone git://github.com/tpope/vim-surround.git
 cd ~/.vim/bundle
 git clone https://github.com/tpope/vim-fugitive.git
 
+# Vim Powerline Theme
+cd ~/.vim/bundle
+git clone https://github.com/lokaltog/vim-powerline
 
 #### KDE ####
 
