@@ -21,11 +21,11 @@ sudo ./install.sh
 
 ### Contents
 
-* KDE Konsole profile and config
-* KDE KWin settings
+* KDE Konsole profile and config (theme, ..)
+* KDE KWin settings (key shortcuts, look, theme, ..)
+* Required packages (`wmctrl`, `git`, `build-essential`, `cmake`, `python`)
 * Zsh configuration (`~/.zshrc`)
 * Vim configuration (`~/.vimrc`)
 * Oh-My-Zsh custom key-bindings (`~/.oh-my-zsh/custom/keys.sh`)
 * Oh-My-Zsh custom greeting script (`~/.oh-my-zsh/custom/greet.sh`)
 * Zsh-Theme (`~/.oh-my-zsh/themes`)
-
