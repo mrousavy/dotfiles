@@ -12,7 +12,7 @@ apt update
 apt upgrade
 
 # Install Reqired packages
-apt install wmctrl git build-essential cmake python3 python3-dev python3-pip #zsh
+apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip #zsh
 
 #### ZSH ####
 
@@ -33,7 +33,7 @@ curl https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/m
 mv ~/.zshrc ~/.zshrc_backup
 # Copy over .zshrc
 cp .zshrc ~/.zshrc
-# Update for now
+# Update for now (only required if using zsh)
 source ~/.zshrc
 
 # Backup old .vimrc
