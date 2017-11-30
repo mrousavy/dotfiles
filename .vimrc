@@ -113,7 +113,15 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Paste mode toggle
 map <leader>pp :setlocal paste!<cr>
 
-"set cursorline
+set cursorline
+
+" Plugins
 execute pathogen#infect()
+
+" Open NERDTree if no file is open
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Shortcut and abbreviation
 cnoreabbrev nt NERDTree
-map <F2> :NERDTree<CR>
+map <F2> :NERDTreeToggle<CR>
