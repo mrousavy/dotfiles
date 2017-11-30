@@ -1,31 +1,119 @@
-set nocompatible
-filetype indent plugin on
-syntax on
-set hidden
+set history=500
+filetype plugin on
+filetype indent on
+
+" Auto outside-changes
+set autoread
+
+" For extra shortcuts
+let mapleader = ","
+let g:maploader= ","
+
+" Quicksave
+nmap <leader>w :w!<cr>
+
+" sudo save
+command W w !sudo tee % > /dev/null
+
+" Enable wildmenu
 set wildmenu
-set showcmd
-set hlsearch
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+set wildignore+=*/.git*
+
+" Caret ruler
+set ruler
+
+" Command bar height
+set cmdheight=2
+
+" Discarded buffers get hidden
+set hid
+
+" Fix backspace
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Case-insensitive and smart search
 set ignorecase
 set smartcase
-set backspace=indent,eol,start
-set autoindent
-set nostartofline
-set ruler
-set laststatus=2
-set confirm
-set visualbell
-set t_vb=
-set cmdheight=2
-set relativenumber
-set number
-set cursorline
-"set shiftwidth=4
-"set softtabstop=4
-"set expandtab
+
+" Find results highlighting
+set hlsearch
+set incsearch
+
+" RegEx
+set magic
+
+" Bracket highlighting
+set showmatch
+set mat=2
+
+" Left margin
+set foldcolumn=1
+
+" Syntax and filetype
+syntax enable
+set ffs=unix,dos,mac
+
+" Disable Vim bck files
+set nobackup
+set nowb
+set noswapfile
+
+" Tabs
+set expandtab
+set smarttab
 set shiftwidth=4
 set tabstop=4
-map Y y$
-nnoremap <C-L> :nohl<CR><C-L>
+
+" Linebreak on 500 chars
+set lbr
+set tw=500
+
+" Smart auto indenting
+set ai
+set si
+set wrap
+
+" Always show status line
+set laststatus=2
+
+" Format statusline
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+" Line number
+set number
+set relativenumber
+
+" 0 -> First readabale character
+map 0 ^
+
+" Alt + J/K line up/down
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+
+" Delete useless whitespaces on save
+fun! CleanExtraSpaces()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	silent! %s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+	autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
+" Windows ^M fix
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" Paste mode toggle
+map <leader>pp :setlocal paste!<cr>
+
+"set cursorline
 execute pathogen#infect()
 cnoreabbrev nt NERDTree
 map <F2> :NERDTree<CR>
