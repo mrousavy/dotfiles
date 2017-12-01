@@ -1,8 +1,10 @@
 # ZSH DIRECTORY
-export ZSH=/home/mrousavy/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # THEME
 ZSH_THEME="bullet-train"
+BULLETTRAIN_PROMPT_CHAR="→"
+#BULLETTRAIN_CUSTOM_MSG="λ"
 
 # IN-CASESENSITIVE COMMAND SEARCHING
 CASE_SENSITIVE="false"
