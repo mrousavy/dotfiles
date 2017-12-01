@@ -5,6 +5,17 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="bullet-train"
 BULLETTRAIN_PROMPT_CHAR="→"
 #BULLETTRAIN_CUSTOM_MSG="λ"
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  status
+  #custom
+  context
+  dir
+  #screen
+  #virtualenv
+  git
+  cmd_exec_time
+)
 
 # IN-CASESENSITIVE COMMAND SEARCHING
 CASE_SENSITIVE="false"
