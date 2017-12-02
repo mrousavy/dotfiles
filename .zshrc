@@ -53,6 +53,13 @@ c() {
 }
 alias cd="c"
 
+# CUSTOM MKDIR (MKDIR & CD)
+mkcd() {
+	mkdir $1;
+	cd $1;
+}
+alias mkdir="mkcd"
+
 # GOOGLE FUNCTION
 function google() { 
 	chromium "http://www.google.com/search?q= $1" &; 
