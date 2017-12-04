@@ -11,6 +11,8 @@
 	"match_brackets": true,
 	"drag_text": false,
 	"auto_complete_cycle": true,
+	"ecc_common_flags": ["-Isrc", "-I/usr/include"],
+	"easy_clang_complete_verbose": true,
 
 	// Theme
 	"theme": "Material-Theme.sublime-theme",
@@ -41,7 +43,7 @@
 	"margin": 0,
 	"overlay_scroll_bars": "enabled",
 	"show_encoding": true,
-    "show_line_endings": true,
-    "show_full_path": false,
-    "folder_exclude_patterns": [".git", ".vs"]
+	"show_line_endings": true,
+	"show_full_path": false,
+	"folder_exclude_patterns": [".git", ".vs"]
 }
