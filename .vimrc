@@ -94,6 +94,10 @@ map 0 ^
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 
+" Code folding
+setlocal foldmethod=syntax
+noremap <F3> <C-C>za
+
 " Delete useless whitespaces on save
 fun! CleanExtraSpaces()
 	let save_cursor = getpos(".")
