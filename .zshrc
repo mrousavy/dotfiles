@@ -60,6 +60,9 @@ mkcd() {
 }
 alias mkdir="mkcd"
 
+# DOCKER ALWAYS RUN WITH SUDO
+alias docker="sudo docker"
+
 # GOOGLE FUNCTION
 function google() { 
 	chromium "http://www.google.com/search?q= $1" &; 
