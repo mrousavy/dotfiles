@@ -81,6 +81,9 @@ cp run-focus /usr/local/bin/run-focus && chmod a+x /usr/local/bin/run-focus
 cp .local/share/konsole/zsh.profile ~/.local/share/konsole/zsh.profile
 cp .config/konsolerc ~/.config/konsolerc
 
+# Copy over KDE
+cp .kde/share/config/kdeglobals ~/.kde/share/config/kdeglobals
+
 # Copy over KWin settings [KDE]
 cp .config/kwinrc ~/.config/kwinrc
 
