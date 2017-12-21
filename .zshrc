@@ -46,6 +46,17 @@ source $ZSH/custom/keys.sh
 alias pipes="~/Documents/pipes.sh"
 alias python=python3
 
+# CUSTOM X CLIPBOARD
+xccpy() {
+    all=""
+    for var in "$@"
+    do
+        all=($all $var)
+    done
+    echo $all | xclip -selection c
+}
+alias copy="xccpy"
+
 # CUSTOM CD (CD & LS)
 c() {
 	cd $1;
