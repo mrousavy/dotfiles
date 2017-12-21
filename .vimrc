@@ -114,6 +114,10 @@ endif
 " Windows ^M fix
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+" 1/2 Page scrolling 
+nnoremap <C-Down> <C-D><CR>
+nnoremap <C-Up> <C-U><CR>
+
 " Paste mode toggle
 map <leader>pp :setlocal paste!<cr>
 
