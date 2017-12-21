@@ -47,6 +47,7 @@ alias pipes="~/Documents/pipes.sh"
 alias python=python3
 
 # CUSTOM X CLIPBOARD
+# copy
 xccpy() {
     all=""
     for var in "$@"
@@ -56,6 +57,11 @@ xccpy() {
     echo $all | xclip -selection c
 }
 alias copy="xccpy"
+# paste
+xcpaste() {
+    echo $(xclip -selection c -o)
+}
+alias paste="xcpaste"
 
 # CUSTOM CD (CD & LS)
 c() {
