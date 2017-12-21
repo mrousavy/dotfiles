@@ -82,7 +82,12 @@ alias docker="sudo docker"
 
 # GOOGLE FUNCTION
 function google() { 
-	chromium "http://www.google.com/search?q= $1" &; 
+    all=""
+    for var in "$@"
+    do
+        all=($all $var)
+    done
+	chromium "http://www.google.com/search?q=$all" &; 
 }
 
 # FUZZY HISTORY CMD SEARCHING [ARR-UP]
