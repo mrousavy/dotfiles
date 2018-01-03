@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 text="Good morning, $(whoami)."
 length=${#text}
 
