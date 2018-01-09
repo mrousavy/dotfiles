@@ -19,6 +19,8 @@ sudo ./install.sh
 
 ![Vim Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-vim.png)
 
+![Neofetch Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-fetch.png)
+
 ### Contents
 
 * KDE Konsole profile and config (theme, ..)
