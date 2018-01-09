@@ -3,7 +3,7 @@
 # SCRIPT TO INSTALL MY IMPORTANT DOTFILES AND PLUGINS TO USER DIR (RUN WITH SUDO)
 
 if [ "$(id -u)" != "0" ]; then
-	echo "This script must be run as root (use 'su root' or 'sudo')" 1>&2
+	echo "This script must be run as root! (use 'sudo')" 1>&2
 	exit 1
 fi
 
@@ -12,7 +12,7 @@ apt update
 apt upgrade
 
 # Install Reqired packages
-read -p "Do you want to install required packages via apt? " -n 1 -r
+read -p "Do you want to install required packages via apt? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -21,7 +21,7 @@ fi
 
 #### ZSH ####
 
-read -p "Do you want to install Zsh themes, scripts and plugins? " -n 1 -r
+read -p "Do you want to install Zsh themes, scripts and plugins? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -53,7 +53,7 @@ fi
 
 #### VIM PLUGINS ####
 
-read -p "Do you want to install Vim configuration, plugins and themes? " -n 1 -r
+read -p "Do you want to install Vim configuration, plugins and themes? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -87,7 +87,7 @@ fi
 
 #### KDE ####
 
-read -p "Do you want to install KDE, Konsole and KWin configurations and scripts? " -n 1 -r
+read -p "Do you want to install KDE, Konsole and KWin configurations and scripts? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
