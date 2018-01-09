@@ -7,15 +7,17 @@ if [ "$(id -u)" != "0" ]; then
 	exit 1
 fi
 
-# Update sources
-apt update
-apt upgrade
+#### APT ####
 
-# Install Reqired packages
 read -p "Do you want to install required packages via apt? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    # Update sources
+    apt update
+    apt upgrade
+
+    # Install Reqired packages
     apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip zsh
 fi
 
