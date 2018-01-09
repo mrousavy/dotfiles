@@ -29,4 +29,4 @@ sudo ./install.sh
 * Oh-My-Zsh custom key-bindings (`~/.oh-my-zsh/custom/keys.sh`)
 * Oh-My-Zsh custom greeting script (`~/.oh-my-zsh/custom/greet.sh`)
 * Zsh-Theme (`~/.oh-my-zsh/themes`)
-* Xorg Clipboard: `xcpaste` and `xccopy` commands
+* Xorg Clipboard: `xcpaste`: `paste` and `xccopy`: `copy` commands

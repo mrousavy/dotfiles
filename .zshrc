@@ -48,7 +48,7 @@ alias python=python3
 
 # CUSTOM X CLIPBOARD
 # copy
-xccpy() {
+xccopy() {
     all=""
     for var in "$@"
     do
@@ -56,7 +56,7 @@ xccpy() {
     done
     echo $all | xclip -selection c
 }
-alias copy="xccpy"
+alias copy="xccopy"
 # paste
 xcpaste() {
     echo $(xclip -selection c -o)
