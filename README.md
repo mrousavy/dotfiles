@@ -15,11 +15,11 @@ sudo ./install.sh
 ```
 
 ### Screenshots
+![Neofetch Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-fetch.png)
+
 ![Zsh Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-zsh.png)
 
 ![Vim Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-vim.png)
-
-![Neofetch Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-fetch.png)
 
 ### Contents
 
