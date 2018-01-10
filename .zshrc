@@ -1,6 +1,10 @@
 # ZSH DIRECTORY
 export ZSH=~/.oh-my-zsh
 
+# DEFAULT EDITOR
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # THEME
 ZSH_THEME="bullet-train"
 BULLETTRAIN_PROMPT_CHAR="→"
