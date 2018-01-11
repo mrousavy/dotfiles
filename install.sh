@@ -67,11 +67,11 @@ then
     git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 
     # YouCompleteMe
-    cd ~/.vim/bundle
-    git clone https://github.com/Valloric/YouCompleteMe.git
-    cd YouCompleteMe
-    git submodule update --init --recursive
-    ./install.py --clang-completer
+#    cd ~/.vim/bundle
+#    git clone https://github.com/Valloric/YouCompleteMe.git
+#    cd YouCompleteMe
+#    git submodule update --init --recursive
+#    ./install.py --clang-completer
 
     # SurroundMe
     cd ~/.vim/bundle
