@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# SCRIPT TO INSTALL MY IMPORTANT DOTFILES AND PLUGINS TO USER DIR (RUN WITH SUDO)
+# SCRIPT TO INSTALL MY IMPORTANT DOTFILES AND PLUGINS TO USER DIR
 
-if [ "$(id -u)" != "0" ]; then
-	echo "This script must be run as root! (use 'sudo')" 1>&2
-	exit 1
-fi
+which sudo &>/dev/null
+[ $? -eq 0 ] && echo "sudo found. Starting install.sh..." || (echo "sudo is not installed! Please install sudo." && read && exit 1)
 
 #### APT ####
 
@@ -14,11 +12,11 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     # Update sources
-    apt update
-    apt upgrade
+    sudo apt update
+    sudo apt upgrade
 
     # Install Reqired packages
-    apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip zsh
+    sudo apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip zsh
 fi
 
 #### ZSH ####
@@ -27,6 +25,8 @@ read -p "Do you want to install Zsh themes, scripts and plugins? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    echo "Installing Oh-my-zsh, please exit Zsh after install."
+
     # Install Oh-My-Zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
