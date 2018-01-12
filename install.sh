@@ -72,7 +72,7 @@ then
     git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 
     # YouCompleteMe
-    read -p "Do you want to install YouCompleteMe for Vim? [y/n] " -n 1 -r
+    read -p "Do you want to install YouCompleteMe for Vim? (Requires Vim 8.0 with Python support) [y/n] " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
