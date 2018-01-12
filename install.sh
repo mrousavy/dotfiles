@@ -67,11 +67,16 @@ then
     git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 
     # YouCompleteMe
-#    cd ~/.vim/bundle
-#    git clone https://github.com/Valloric/YouCompleteMe.git
-#    cd YouCompleteMe
-#    git submodule update --init --recursive
-#    ./install.py --clang-completer
+    read -p "Do you want to install YouCompleteMe for Vim? [y/n] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        cd ~/.vim/bundle
+        git clone https://github.com/Valloric/YouCompleteMe.git
+        cd YouCompleteMe
+        git submodule update --init --recursive
+        ./install.py --clang-completer
+    fi
 
     # SurroundMe
     cd ~/.vim/bundle
