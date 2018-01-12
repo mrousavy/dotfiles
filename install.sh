@@ -27,7 +27,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "Installing Oh-my-zsh, please exit Zsh after install."
 
+    # Copy over custom scripts
+    cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
+    cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
+
     # Install Oh-My-Zsh
+    TEST_CURRENT_SHELL="zsh"   # Prevent zsh launch
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     # Zsh-Autosuggestions
@@ -99,8 +104,6 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     # Copy over custom scripts
-    cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
-    cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
     cp run-focus /usr/local/bin/run-focus && chmod a+x /usr/local/bin/run-focus
 
     # Copy over Konsole settings [KDE]
