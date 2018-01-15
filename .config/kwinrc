@@ -6,7 +6,7 @@ GLColorCorrection=false
 GLCore=true
 GLPlatformInterface=glx
 GLPreferBufferSwap=a
-GLTextureFilter=1
+GLTextureFilter=0
 HiddenPreviews=5
 OpenGLIsUnsafe=false
 WindowsBlockCompositing=true
@@ -24,9 +24,13 @@ TabBoxAlternative=false
 BorderActivate=9
 BorderActivateCylinder=9
 BorderActivateSphere=9
+TouchBorderActivate=9
+TouchBorderActivateCylinder=9
+TouchBorderActivateSphere=9
 
 [Effect-DesktopGrid]
 BorderActivate=9
+TouchBorderActivate=9
 
 [Effect-FlipSwitch]
 TabBox=false
@@ -42,6 +46,9 @@ AnimationDuration=470
 BorderActivate=9
 BorderActivateAll=9
 BorderActivateClass=9
+TouchBorderActivate=7
+TouchBorderActivateAll=9
+TouchBorderActivateClass=9
 
 [Effect-Zoom]
 InitialZoom=1
@@ -114,6 +121,8 @@ MultiScreenMode=0
 ShowDesktopMode=0
 ShowTabBox=true
 SwitchingMode=0
+TouchBorderActivate=9
+TouchBorderAlternativeActivate=9
 
 [TabBoxAlternative]
 ActivitiesMode=1
@@ -126,6 +135,12 @@ MultiScreenMode=0
 ShowDesktopMode=0
 ShowTabBox=true
 SwitchingMode=0
+
+[TouchEdges]
+Bottom=None
+Left=None
+Right=None
+Top=None
 
 [Windows]
 ActiveMouseScreen=false

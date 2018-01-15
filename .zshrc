@@ -91,7 +91,7 @@ function google() {
     do
         all=($all $var)
     done
-	chromium "http://www.google.com/search?q=$all" &; 
+	xdg-open "http://www.google.com/search?q=$all" &; 
 }
 
 # FUZZY HISTORY CMD SEARCHING [ARR-UP]
