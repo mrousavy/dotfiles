@@ -25,7 +25,8 @@ read -p "Do you want to install Zsh themes, scripts and plugins? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    echo "Installing Oh-my-zsh, please exit Zsh after install."
+    echo "Installing Oh-my-zsh, please exit Zsh after install. Press Enter to continue..."
+    read
 
     # Copy over custom scripts
     cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
@@ -56,6 +57,8 @@ then
     mv ~/.vimrc ~/.vimrc_backup
     # Copy over .vimrc
     cp .vimrc ~/.vimrc
+
+    echo "Zsh install done. You might want to check out Powerline fonts so your terminal doesn't look bugged: https://github.com/powerline/fonts"
 fi
 
 #### VIM PLUGINS ####
