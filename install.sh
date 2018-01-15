@@ -29,10 +29,6 @@ then
     read
     echo "Preparing.."
 
-    # Copy over custom scripts
-    cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
-    cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
-
     # Install Oh-My-Zsh
     TEST_CURRENT_SHELL="zsh"   # Prevent zsh launch
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -46,6 +42,10 @@ then
     # Zsh-Bullet Train theme
     mkdir ~/.oh-my-zsh/custom/themes
     curl https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme
+
+    # Copy over custom scripts
+    cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
+    cp .oh-my-zsh/custom/keys.sh ~/.oh-my-zsh/custom/keys.sh
 
     # Backup old .zshrc
     mv ~/.zshrc ~/.zshrc_backup
