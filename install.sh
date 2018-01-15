@@ -27,6 +27,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "Installing Oh-my-zsh, please exit Zsh after install. Press Enter to continue..."
     read
+    echo "Preparing.."
 
     # Copy over custom scripts
     cp .oh-my-zsh/custom/greet.sh ~/.oh-my-zsh/custom/greet.sh
