@@ -70,6 +70,7 @@ source $ZSH/custom/keys.sh
 # SOME ALIASES
 alias pipes="~/Documents/pipes.sh"
 alias python=python3
+alias pip=pip3
 
 # CUSTOM X CLIPBOARD
 # copy
