@@ -80,6 +80,13 @@ set wrap
 " Always show status line
 set laststatus=2
 
+function! HasPaste()                                                                           
+  if &paste             
+    return 'PASTE MODE  '
+  endif                 
+  return ''             
+endfunction
+
 " Format statusline
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
