@@ -9,17 +9,26 @@ export EDITOR="$VISUAL"
 ZSH_THEME="bullet-train"
 BULLETTRAIN_PROMPT_CHAR="→"
 #BULLETTRAIN_CUSTOM_MSG="λ"
-BULLETTRAIN_PROMPT_ORDER=(
-  time
-  status
-  #custom
-  context
-  dir
-  #screen
-  #virtualenv
-  git
-  cmd_exec_time
-)
+if [ -z ${MINIMAL_THEME+x} ]
+then
+    BULLETTRAIN_PROMPT_ORDER=(
+      time
+      status
+      #custom
+      context
+      dir
+      #screen
+      #virtualenv
+      git
+      cmd_exec_time
+    )
+else
+    BULLETTRAIN_PROMPT_ORDER=(
+      status
+      dir
+    )
+fi
+
 if [ -z ${LIGHT_THEME+x} ]
 then
     BULLETTRAIN_CONTEXT_BG="black"
