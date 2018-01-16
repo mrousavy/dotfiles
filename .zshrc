@@ -28,19 +28,15 @@ else
       dir
     )
 fi
-(
-if [ -z ${LIGHT_THEME+x} ]
+if ! [ -z ${LIGHT_THEME+x} ]
 then
-    BULLETTRAIN_CONTEXT_BG="black"
-    BULLETTRAIN_CONTEXT_FG="white"
-else
     BULLETTRAIN_TIME_BG="black"
     BULLETTRAIN_TIME_FG="white"
     BULLETTRAIN_CONTEXT_BG="white"
     BULLETTRAIN_CONTEXT_FG="black"
+    BULLETTRAIN_DIR_BG="cyan"
     BULLETTRAIN_DIR_FG="white"
 fi
-)
 
 # IN-CASESENSITIVE COMMAND SEARCHING
 CASE_SENSITIVE="false"
