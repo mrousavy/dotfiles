@@ -1,6 +1,11 @@
 ## My personal minimalistic dotfiles
 The install script will only work if you have **zsh** installed & initialized, and **KDE Konsole** installed.
 
+For Zsh/Console there are two settings:
+
+* When the environment variable `$MINIMAL_THEME` is set, the input prompt line does **only show directory and status**
+* When the environment variable `$LIGHT_THEME` is set, the terminal's **input prompt line** is adjusted for a **white background terminal**.
+
 ### Install
 First you'll need zsh and vim:
 ```sh
