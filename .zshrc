@@ -28,7 +28,7 @@ else
       dir
     )
 fi
-
+(
 if [ -z ${LIGHT_THEME+x} ]
 then
     BULLETTRAIN_CONTEXT_BG="black"
@@ -40,6 +40,7 @@ else
     BULLETTRAIN_CONTEXT_FG="black"
     BULLETTRAIN_DIR_FG="white"
 fi
+)
 
 # IN-CASESENSITIVE COMMAND SEARCHING
 CASE_SENSITIVE="false"
