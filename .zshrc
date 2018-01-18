@@ -67,6 +67,9 @@ source $ZSH/custom/keys.sh
 alias pipes="~/Documents/pipes.sh"
 alias python=python3
 alias pip=pip3
+if ! hash code 2>/dev/null; then
+    alias code=code-insiders
+fi
 
 # CUSTOM X CLIPBOARD
 # copy
@@ -101,6 +104,7 @@ alias mkdir="mkcd"
 
 # DOCKER ALWAYS RUN WITH SUDO
 alias docker="sudo docker"
+alias docker-compose="sudo docker-compose"
 
 # GOOGLE FUNCTION
 function google() { 
