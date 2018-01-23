@@ -20,6 +20,11 @@ let g:onedark_termcolors=256
 let g:onedark_terminal_italics=1
 colorscheme onedark
 
+" Color Theme - ONEDARK Status bar Lightline
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
+
 " Auto outside-changes
 set autoread
 
@@ -108,10 +113,6 @@ endfunction
 " Format statusline
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ }
-
 " Line number
 set number
 set relativenumber
@@ -152,6 +153,9 @@ map <leader>pp :setlocal paste!<cr>
 
 set cursorline
 
+" Fix lag - render lazy
+set lazyredraw
+
 " Plugins
 execute pathogen#infect()
 
@@ -159,6 +163,11 @@ execute pathogen#infect()
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" Shortcut and abbreviation
+" Shortcut and abbreviation - Nerd Tree
 cnoreabbrev nt NERDTree
 map <F2> :NERDTreeToggle<CR>
+
+" Shortcut and abbreviation - LaTeX Live Preview
+cnoreabbrev texp NERDTree
+map <F5> :LLPStartPreview<CR>
+

@@ -107,6 +107,9 @@ then
 	#cp onedark.vim/autoload/onedark.vim ~/.vim/autoload
 	#cp onedark.vim/autoload/lightline/colorscheme/onedark.vim ~/.vim/autoload/lightline/colorscheme/
 	#rm -rf onedark.vim
+
+    # LaTeX live preview
+    git clone https://github.com/xuhdev/vim-latex-live-preview ~/.vim/bundle/vim-latex-live-preview
 fi
 
 
