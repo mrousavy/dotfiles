@@ -96,8 +96,9 @@ then
     git clone https://github.com/tpope/vim-fugitive.git
 
     # Vim Powerline Theme
-    cd ~/.vim/bundle
-    git clone https://github.com/lokaltog/vim-powerline
+    #cd ~/.vim/bundle
+    #git clone https://github.com/lokaltog/vim-powerline
+    git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim
 fi
 
 

@@ -1,6 +1,24 @@
+" Filetypes
 set history=500
 filetype plugin on
 filetype indent on
+
+" NEOVIM
+" Block Cursor in INPUT
+set guicursor=
+
+" Color Theme - ONEDARK
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 " Auto outside-changes
 set autoread
@@ -89,6 +107,10 @@ endfunction
 
 " Format statusline
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
 
 " Line number
 set number
