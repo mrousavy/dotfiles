@@ -88,17 +88,25 @@ then
     fi
 
     # SurroundMe
-    cd ~/.vim/bundle
-    git clone git://github.com/tpope/vim-surround.git
+    git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround.git
 
     # FugitiveVim (Git)
-    cd ~/.vim/bundle
-    git clone https://github.com/tpope/vim-fugitive.git
+    git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.git
 
     # Vim Powerline Theme
     #cd ~/.vim/bundle
     #git clone https://github.com/lokaltog/vim-powerline
     git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim
+
+    # Vim Polyglot extended syntax highlighting
+    git clone https://github.com/sheerun/vim-polyglot ~/.vim/bundle/vim-polyglot
+
+	# One Dark Color Scheme/Theme
+    git clone https://github.com/joshdick/onedark.vim ~/.vim/bundle/onedark.vim
+	#cp onedark.vim/colors/onedark.vim ~/.vim/colors
+	#cp onedark.vim/autoload/onedark.vim ~/.vim/autoload
+	#cp onedark.vim/autoload/lightline/colorscheme/onedark.vim ~/.vim/autoload/lightline/colorscheme/
+	#rm -rf onedark.vim
 fi
 
 
