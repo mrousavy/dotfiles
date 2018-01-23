@@ -16,7 +16,7 @@ then
     sudo apt upgrade
 
     # Install Reqired packages
-    sudo apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip zsh
+    sudo apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip neovim zsh
 fi
 
 #### ZSH ####
