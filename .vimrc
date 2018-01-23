@@ -167,7 +167,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 cnoreabbrev nt NERDTree
 map <F2> :NERDTreeToggle<CR>
 
-" Shortcut and abbreviation - LaTeX Live Preview
+" Shortcut and abbreviation - LaTeX Live Previews
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'okular'
 cnoreabbrev texp NERDTree
 map <F5> :LLPStartPreview<CR>
 
