@@ -91,7 +91,9 @@ alias paste="xcpaste"
 # CUSTOM CD (CD & LS)
 c() {
 	cd $1;
-	ls;
+    if [ $? -eq 0 ]; then
+	    ls;
+    fi
 }
 alias cd="c"
 
