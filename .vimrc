@@ -1,3 +1,6 @@
+" Pathogen Plugin Manager
+execute pathogen#infect()
+
 " Filetypes
 set history=500
 filetype plugin on
@@ -49,7 +52,7 @@ set wildignore+=*/.git*
 set ruler
 
 " Command bar height
-set cmdheight=2
+"set cmdheight=2
 
 " Discarded buffers get hidden
 set hid
@@ -156,9 +159,7 @@ set cursorline
 " Fix lag - render lazy
 set lazyredraw
 
-" Plugins
-execute pathogen#infect()
-
+" PLUGINS
 " Open NERDTree if no file is open
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
