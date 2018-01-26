@@ -148,8 +148,8 @@ endif
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " 1/2 Page scrolling 
-nnoremap <C-Down> <C-D><CR>
-nnoremap <C-Up> <C-U><CR>
+nnoremap <C-Down> <C-e><CR>
+nnoremap <C-Up> <Up><C-y><CR>
 
 " Paste mode toggle
 map <leader>pp :setlocal paste!<cr>
@@ -175,6 +175,5 @@ cnoreabbrev texp NERDTree
 map <F5> :LLPStartPreview<CR>
 
 " Spell check
-set spell spelllang=en_us
-"set spell spelllang=de_at
+map <F3> :setlocal spell! spelllang=en_us<CR>
 
