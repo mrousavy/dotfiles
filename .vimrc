@@ -169,8 +169,12 @@ cnoreabbrev nt NERDTree
 map <F2> :NERDTreeToggle<CR>
 
 " Shortcut and abbreviation - LaTeX Live Previews
-autocmd Filetype tex setl updatetime=1
+autocmd Filetype tex setl updatetime=1500
 let g:livepreview_previewer = 'okular'
 cnoreabbrev texp NERDTree
 map <F5> :LLPStartPreview<CR>
+
+" Spell check
+set spell spelllang=en_us
+"set spell spelllang=de_at
 

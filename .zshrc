@@ -134,3 +134,7 @@ fi
 # GREETING
 source $ZSH/custom/greet.sh
 
+# TODO: REMOVE, ONLY FOR SCHOOL
+alias sew="xdg-open ~/School/SEW/"
+alias insy="xdg-open ~/School/INSY/"
+
