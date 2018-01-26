@@ -149,7 +149,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " 1/2 Page scrolling 
 nnoremap <C-Down> <C-e><CR>
-nnoremap <C-Up> <Up><C-y><CR>
+nnoremap <C-Up> <Up><Up><C-y><CR>
 
 " Paste mode toggle
 map <leader>pp :setlocal paste!<cr>
