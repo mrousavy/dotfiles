@@ -1,10 +1,14 @@
+" Disable Vi emulation
+set nocompatible
+
 " Pathogen Plugin Manager
 execute pathogen#infect()
 
 " Filetypes
 set history=500
-filetype plugin on
-filetype indent on
+
+" Filetype indenting
+filetype plugin indent on
 
 " NEOVIM
 " Block Cursor in INPUT
