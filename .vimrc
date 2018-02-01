@@ -175,6 +175,7 @@ map <F2> :NERDTreeToggle<CR>
 " Shortcut and abbreviation - LaTeX Live Previews
 autocmd Filetype tex setl updatetime=1500
 let g:livepreview_previewer = 'okular'
+let g:livepreview_engine = 'latexmk -pdf'
 cnoreabbrev texp NERDTree
 map <F5> :LLPStartPreview<CR>
 

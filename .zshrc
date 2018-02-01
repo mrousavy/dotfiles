@@ -108,6 +108,9 @@ alias mkdir="mkcd"
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
 
+# SCREENKEY COMMAND
+alias sk="killall screenkey &>/dev/null || screenkey"
+
 # GOOGLE FUNCTION
 function google() { 
     all=""
