@@ -43,7 +43,7 @@ let g:maploader= ","
 nmap <leader>w :w!<cr>
 
 " sudo save
-command W w !sudo tee % > /dev/null
+command W w !sudo tee > /dev/null %
 
 " Enable wildmenu
 set wildmenu
