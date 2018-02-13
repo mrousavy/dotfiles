@@ -104,6 +104,11 @@ mkcd() {
 }
 alias mkdir="mkcd"
 
+pullall() {
+    echo "Pulling all git subdirectories.."
+    ls | xargs -P10 -I{} git -C {} pull
+}
+
 # DOCKER ALWAYS RUN WITH SUDO
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
