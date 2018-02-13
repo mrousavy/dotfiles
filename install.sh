@@ -110,6 +110,10 @@ then
 
     # LaTeX live preview
     git clone https://github.com/xuhdev/vim-latex-live-preview ~/.vim/bundle/vim-latex-live-preview
+
+
+    # Copy update script
+    cp update-plugins.sh ~/.vim/
 fi
 
 
