@@ -20,11 +20,13 @@ cd dotfiles
 ```
 
 ### Screenshots
-![Neofetch Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-fetch.png)
+![Full Desktop](https://github.com/mrousavy/dotfiles/raw/master/Screenshots/desktop.png)
 
-![Zsh Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-zsh.png)
+![Neofetch Screenshot](https://github.com/mrousavy/dotfiles/raw/master/Screenshots/fetch.png)
 
-![Vim Screenshot](https://github.com/mrousavy/dotfiles/raw/master/screenshot-vim.png)
+![Zsh Screenshot](https://github.com/mrousavy/dotfiles/raw/master/Screenshots/zsh.png)
+
+![Vim Screenshot](https://github.com/mrousavy/dotfiles/raw/master/Screenshots/vim.png)
 
 ### Contents
 
