@@ -58,6 +58,9 @@ then
     mv ~/.vimrc ~/.vimrc_backup
     # Copy over .vimrc
     cp .vimrc ~/.vimrc
+    # Neovim softlink
+    mkdir ~/.config/nvim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
 
     echo "Zsh install done. You might want to check out Powerline fonts so your terminal doesn't look bugged: https://github.com/powerline/fonts"
 fi
