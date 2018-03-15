@@ -1,5 +1,5 @@
 # GOTO HOME DIR
-function goto_home() { 
+function goto_home() {
 	BUFFER="cd ~/"$BUFFER
 	zle end-of-line
 	zle accept-line
@@ -14,4 +14,11 @@ function add_sudo() {
 }
 zle -N add_sudo
 bindkey "^s" add_sudo
+
+# EXPLORER HERE
+function explorer_here() {
+    xdg-open . &
+}
+zle -N explorer_here
+bindkey "^e" explorer_here
 
