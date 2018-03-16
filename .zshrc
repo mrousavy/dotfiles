@@ -109,9 +109,9 @@ pullall() {
     ls | xargs -P10 -I{} git -C {} pull
 }
 
-# DOCKER ALWAYS RUN WITH SUDO
-alias docker="sudo docker"
-alias docker-compose="sudo docker-compose"
+# DOCKER ALWAYS RUN WITH SUDO (disabled because autocompletion)
+#alias docker="sudo docker"
+#alias docker-compose="sudo docker-compose"
 
 # SCREENKEY COMMAND
 alias sk="killall screenkey &>/dev/null || screenkey"
