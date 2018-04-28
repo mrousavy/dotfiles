@@ -5,6 +5,12 @@
 which sudo &>/dev/null
 [ $? -eq 0 ] && echo "sudo found. Starting install.sh..." || (echo "sudo is not installed! Please install sudo." && read && exit 1)
 
+which curl &>/dev/null
+[ $? -eq 0 ] && echo "curl found. Starting install.sh..." || (echo "curl is not installed! Please install curl." && read && exit 1)
+
+which git &>/dev/null
+[ $? -eq 0 ] && echo "git found. Starting install.sh..." || (echo "git is not installed! Please install git." && read && exit 1)
+
 #### APT ####
 
 read -p "Do you want to install required packages via apt? [y/n] " -n 1 -r
@@ -40,7 +46,7 @@ then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
     # Zsh-Bullet Train theme
-    mkdir ~/.oh-my-zsh/custom/themes
+    mkdir -p ~/.oh-my-zsh/custom/themes
     curl https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme
 
     # Copy over custom scripts
@@ -54,14 +60,6 @@ then
     # Update for now (only required if using zsh)
     source ~/.zshrc
 
-    # Backup old .vimrc
-    mv ~/.vimrc ~/.vimrc_backup
-    # Copy over .vimrc
-    cp .vimrc ~/.vimrc
-    # Neovim softlink
-    mkdir ~/.config/nvim
-    ln -s ~/.vimrc ~/.config/nvim/init.vim
-
     echo "Zsh install done. You might want to check out Powerline fonts so your terminal doesn't look bugged: https://github.com/powerline/fonts"
 fi
 
@@ -71,6 +69,15 @@ read -p "Do you want to install Vim configuration, plugins and themes? [y/n] " -
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    # Backup old .vimrc
+    mv ~/.vimrc ~/.vimrc_backup &>/dev/null
+    # Neovim softlink
+    mkdir -p ~/.config/nvim
+    ln -s ~/.config/nvim ~/.vim
+    ln -s ~/.config/nvim/init.vim ~/.vimrc
+    # Copy over .vimrc
+    cp .vimrc ~/.config/nvim/init.vim
+
     # Pathogen Vim
     mkdir -p ~/.vim/autoload ~/.vim/bundle
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
