@@ -172,6 +172,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 cnoreabbrev nt NERDTree
 map <F2> :NERDTreeToggle<CR>
 
+" Abbreviation JSON
+cnoreabbrev json %!python -m json.tool
+
 " Shortcut and abbreviation - LaTeX Live Previews
 autocmd Filetype tex setl updatetime=1500
 let g:livepreview_previewer = 'okular'

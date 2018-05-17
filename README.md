@@ -6,6 +6,8 @@ For Zsh/Console there are two settings:
 * When the environment variable `$MINIMAL_THEME` is set, the input prompt line does **only show directory and status**
 * When the environment variable `$LIGHT_THEME` is set, the terminal's **input prompt line** is adjusted for a **white background terminal**.
 
+<a href='https://ko-fi.com/F1F8CLXG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 ### Install
 First you'll need zsh and vim:
 ```sh
