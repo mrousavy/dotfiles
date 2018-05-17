@@ -1,6 +1,6 @@
 # GOTO HOME DIR
 function goto_home() {
-	BUFFER="cd ~/"$BUFFER
+	BUFFER="cd ~/"
 	zle end-of-line
 	zle accept-line
 }
