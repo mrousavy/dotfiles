@@ -160,6 +160,9 @@ map <leader>pp :setlocal paste!<cr>
 
 set cursorline
 
+" Fix Mouse Copying (Works?)
+se mouse+=a
+
 " Fix lag - render lazy
 set lazyredraw
 
