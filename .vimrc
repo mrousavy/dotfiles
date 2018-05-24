@@ -160,11 +160,11 @@ map <leader>pp :setlocal paste!<cr>
 
 set cursorline
 
-" Fix Mouse Copying (Works?)
-se mouse+=a
-
 " Fix lag - render lazy
 set lazyredraw
+
+" Fix mouse copying from terminal
+set mouse+=a
 
 " PLUGINS
 " Open NERDTree if no file is open
