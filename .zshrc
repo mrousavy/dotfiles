@@ -112,6 +112,15 @@ pullall() {
 # SCREENKEY COMMAND
 alias sk="killall screenkey &>/dev/null || screenkey"
 
+# UGLY GIT DRIVE BY COMMIT
+alias gitdriveby='git add --all; git commit -m "$(curl -s http://whatthecommit.com/index.txt )"; git push'
+
+# CD UP SCRIPT
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../../"
+alias .....="cd ../../../.."
+
 # GOOGLE FUNCTION
 function google() { 
     all=""
