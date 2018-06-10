@@ -71,10 +71,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     # Backup old .vimrc
     mv ~/.vimrc ~/.vimrc_backup &>/dev/null
+    mv ~/.config/nvim ~/nvim_backup &>/dev/null
     # Neovim softlink
-    mkdir -p ~/.config/nvim
-    ln -s ~/.config/nvim ~/.vim
-    ln -s ~/.config/nvim/init.vim ~/.vimrc
+    ln -s ~/.vim ~/.config/nvim
+    rm ~/.config/nvim/init.vim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
     # Copy over .vimrc
     cp .vimrc ~/.config/nvim/init.vim
 
