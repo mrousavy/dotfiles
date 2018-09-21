@@ -5,35 +5,35 @@ update_info=kded.upd:kde3.0,kdeui.upd:kde4/migrate_from_kde3_icon_theme
 Color=56,56,56
 ColorAmount=0
 ColorEffect=0
-ContrastAmount=0.65000000000000002
+ContrastAmount=0.65
 ContrastEffect=1
-IntensityAmount=0.10000000000000001
+IntensityAmount=0.1
 IntensityEffect=2
 
 [ColorEffects:Inactive]
 ChangeSelectionColor=true
 Color=112,111,110
-ColorAmount=0.025000000000000001
+ColorAmount=0.025
 ColorEffect=2
-ContrastAmount=0.10000000000000001
+ContrastAmount=0.1
 ContrastEffect=2
 Enable=false
 IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=64,69,82
-BackgroundNormal=65,72,87
+BackgroundAlternate=189,195,199
+BackgroundNormal=211,218,227
 DecorationFocus=82,148,226
 DecorationHover=82,148,226
 ForegroundActive=61,174,233
-ForegroundInactive=102,106,115
+ForegroundInactive=163,165,172
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=211,218,227
+ForegroundNormal=92,97,108
 ForegroundPositive=39,174,96
-ForegroundVisited=82,148,226
+ForegroundVisited=127,140,141
 
 [Colors:Complementary]
 BackgroundAlternate=59,64,69
@@ -55,55 +55,55 @@ BackgroundNormal=82,148,226
 DecorationFocus=82,148,226
 DecorationHover=82,148,226
 ForegroundActive=252,252,252
-ForegroundInactive=211,218,227
+ForegroundInactive=239,240,241
 ForegroundLink=253,188,75
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=211,218,227
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=189,195,199
 
 [Colors:Tooltip]
-BackgroundAlternate=47,52,63
-BackgroundNormal=53,57,69
+BackgroundAlternate=77,77,77
+BackgroundNormal=92,97,108
 DecorationFocus=82,148,226
 DecorationHover=82,148,226
 ForegroundActive=61,174,233
-ForegroundInactive=102,106,115
+ForegroundInactive=163,165,172
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=211,218,227
+ForegroundNormal=231,232,235
 ForegroundPositive=39,174,96
-ForegroundVisited=82,148,226
+ForegroundVisited=127,140,141
 
 [Colors:View]
-BackgroundAlternate=64,69,82
-BackgroundNormal=64,69,82
+BackgroundAlternate=239,240,241
+BackgroundNormal=255,255,255
 DecorationFocus=82,148,226
 DecorationHover=82,148,226
 ForegroundActive=61,174,233
-ForegroundInactive=102,106,115
+ForegroundInactive=163,165,172
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=211,218,227
+ForegroundNormal=92,97,108
 ForegroundPositive=39,174,96
-ForegroundVisited=82,148,226
+ForegroundVisited=127,140,141
 
 [Colors:Window]
-BackgroundAlternate=47,52,63
-BackgroundNormal=47,52,63
+BackgroundAlternate=189,195,199
+BackgroundNormal=231,232,235
 DecorationFocus=82,148,226
 DecorationHover=82,148,226
 ForegroundActive=61,174,233
-ForegroundInactive=102,106,115
+ForegroundInactive=163,165,172
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=211,218,227
+ForegroundNormal=92,97,108
 ForegroundPositive=39,174,96
-ForegroundVisited=82,148,226
+ForegroundVisited=127,140,141
 
 [DesktopIcons]
 ActiveColor=169,156,255
@@ -149,8 +149,8 @@ History Items[$e]=file://$HOME/Downloads
 
 [General]
 BrowserApplication[$e]=!chromium
-ColorScheme=Arc Dark
-Name=Arc Dark
+ColorScheme=Arc
+Name=Arc
 UseSystemBell=true
 XftAntialias=true
 XftHintStyle=hintmedium
@@ -164,7 +164,7 @@ toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 widgetStyle=breeze
 
 [Icons]
-Theme=Papirus-Dark
+Theme=Papirus-Light
 
 [KDE]
 ColorScheme=Breeze
@@ -279,9 +279,9 @@ DisabledValue=1
 Size=22
 
 [WM]
-activeBackground=47,52,63
-activeBlend=47,52,63
-activeForeground=211,218,227
-inactiveBackground=47,52,63
-inactiveBlend=47,52,63
-inactiveForeground=102,106,115
+activeBackground=231,232,235
+activeBlend=231,232,235
+activeForeground=92,97,108
+inactiveBackground=231,232,235
+inactiveBlend=231,232,235
+inactiveForeground=163,165,172

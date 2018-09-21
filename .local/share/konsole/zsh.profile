@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Breeze
+ColorScheme=ArcDark
 Font=Hack,11,-1,5,50,0,0,0,0,0
 
 [Cursor Options]

@@ -164,7 +164,7 @@ set cursorline
 set lazyredraw
 
 " Fix mouse copying from terminal
-set mouse+=a
+"set mouse+=a
 
 " PLUGINS
 " Open NERDTree if no file is open
