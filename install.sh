@@ -105,23 +105,13 @@ then
     git clone https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.git
 
     # Vim Powerline Theme
-    #cd ~/.vim/bundle
-    #git clone https://github.com/lokaltog/vim-powerline
-    git clone https://github.com/itchyny/lightline.vim ~/.vim/bundle/lightline.vim
+    git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 
     # Vim Polyglot extended syntax highlighting
     git clone https://github.com/sheerun/vim-polyglot ~/.vim/bundle/vim-polyglot
 
-	# One Dark Color Scheme/Theme
-    git clone https://github.com/joshdick/onedark.vim ~/.vim/bundle/onedark.vim
-	#cp onedark.vim/colors/onedark.vim ~/.vim/colors
-	#cp onedark.vim/autoload/onedark.vim ~/.vim/autoload
-	#cp onedark.vim/autoload/lightline/colorscheme/onedark.vim ~/.vim/autoload/lightline/colorscheme/
-	#rm -rf onedark.vim
-
-    # LaTeX live preview
-    git clone https://github.com/xuhdev/vim-latex-live-preview ~/.vim/bundle/vim-latex-live-preview
-
+	# One Dark/Light Color Scheme/Theme
+    git clone https://github.com/rakr/vim-one ~/.vim/bundle/vim-one
 
     # Copy update script
     cp update-plugins.sh ~/.vim/
