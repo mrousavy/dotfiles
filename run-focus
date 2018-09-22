@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Run or Focus a program
-wmctrl -x -a "$1" || $2

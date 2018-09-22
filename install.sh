@@ -22,7 +22,7 @@ then
     sudo apt upgrade
 
     # Install Reqired packages
-    sudo apt install curl wmctrl git build-essential cmake python3 python3-dev python3-pip neovim zsh
+    sudo apt install curl git build-essential cmake python3 python3-dev python3-pip neovim zsh
 fi
 
 #### ZSH ####
@@ -124,16 +124,15 @@ read -p "Do you want to install KDE, Konsole and KWin configurations and scripts
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    # Copy over custom scripts
-    cp run-focus /usr/local/bin/run-focus && chmod a+x /usr/local/bin/run-focus
-
     # Copy over Konsole settings [KDE]
-    cp .local/share/konsole/zsh.profile ~/.local/share/konsole/zsh.profile
+    cp .local/share/konsole/* ~/.local/share/konsole/
     cp .config/konsolerc ~/.config/konsolerc
-
-    # Copy over KDE
-    cp .kde/share/config/kdeglobals ~/.kde/share/config/kdeglobals
 
     # Copy over KWin settings [KDE]
     cp .config/kwinrc ~/.config/kwinrc
+
+    # Copy over KDE Globals
+    cp .kde/share/config/kdeglobals ~/.kde/share/config/kdeglobals
 fi
+
+echo "Installation completed. Restart X for configs to load."
