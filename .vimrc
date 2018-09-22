@@ -14,7 +14,7 @@ filetype plugin indent on
 " Block Cursor in INPUT
 set guicursor=
 
-" Color Theme - ONEDARK
+" True Color Support
 if (empty($TMUX))
   if (has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -23,14 +23,18 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
-colorscheme onedark
 
-" Color Theme - ONEDARK Status bar Lightline
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ }
+" Color Theme - ONE Dark/Light
+colorscheme one
+let g:one_allow_italics = 1
+if $LIGHT_THEME == 'true'
+    set background=light
+else
+    set background=dark
+endif
+
+" Color Theme - ONE Dark/Light status bar airline
+let g:airline_theme='one'
 
 " Auto outside-changes
 set autoread
