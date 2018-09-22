@@ -1,11 +1,11 @@
 [Desktop Entry]
-DefaultProfile=zsh.profile
+DefaultProfile=zsh light.profile
 
 [Favorite Profiles]
-Favorites=zsh.profile
+Favorites=zsh light.profile,zsh.profile
 
 [KFileDialog Settings]
-Recent Files[$e]=nature.jpg,file:$HOME/Pictures/splash_red.jpg,file:$HOME/Pictures/nature.jpg
+Recent Files[$e]=nature.jpg,file:$HOME/Pictures/nature.jpg,file:$HOME/Pictures/fuji.jpg,file:$HOME/Pictures/splash_red.jpg
 Recent URLs[$e]=file:$HOME/Pictures/
 
 [KonsoleWindow]
@@ -14,7 +14,7 @@ ShowMenuBarByDefault=false
 
 [MainWindow]
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAACdcAAAWEAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAAA4UAAAIwAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 
 [Notification Messages]
