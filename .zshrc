@@ -1,42 +1,9 @@
-# ZSH DIRECTORY
-export ZSH=~/.oh-my-zsh
+export ZSH="/Users/mrousavy/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 
-# DEFAULT EDITOR
 export VISUAL=vim
 export EDITOR="$VISUAL"
-
-# THEME
-ZSH_THEME="bullet-train"
-BULLETTRAIN_PROMPT_CHAR="→"
-#BULLETTRAIN_CUSTOM_MSG="λ"
-if [ -z ${MINIMAL_THEME+x} ]
-then
-    BULLETTRAIN_PROMPT_ORDER=(
-      time
-      status
-      #custom
-      context
-      dir
-      #screen
-      #virtualenv
-      git
-      cmd_exec_time
-    )
-else
-    BULLETTRAIN_PROMPT_ORDER=(
-      status
-      dir
-    )
-fi
-if ! [ -z ${LIGHT_THEME+x} ]
-then
-    BULLETTRAIN_TIME_BG="black"
-    BULLETTRAIN_TIME_FG="white"
-    BULLETTRAIN_CONTEXT_BG="white"
-    BULLETTRAIN_CONTEXT_FG="black"
-    BULLETTRAIN_DIR_BG="cyan"
-    BULLETTRAIN_DIR_FG="white"
-fi
+ZSH_THEME="mrousavy"
 
 # IN-CASESENSITIVE COMMAND SEARCHING
 CASE_SENSITIVE="false"
@@ -48,45 +15,16 @@ ENABLE_CORRECTION="true"
 SAVEHIST=100
 HISTSIZE=50
 
-# COMPLETION LOADING INDICATOR
-# [DISABLED, BECAUSE THIS CAUSES BULLETTRAIN TO DISAPPEAR]
-#COMPLETION_WAITING_DOTS="true"
-
 # LOADED PLUGINS
 plugins=(
   git
-  fast-syntax-highlighting
+  zsh-syntax-highlighting
   zsh-autosuggestions
 )
 
 # RUN EXTRA FILES
 source $ZSH/oh-my-zsh.sh
 source $ZSH/custom/keys.sh
-
-# SOME ALIASES
-alias pipes="~/Documents/pipes.sh"
-alias python=python3
-alias pip=pip3
-if ! hash code 2>/dev/null; then
-    alias code=code-insiders
-fi
-
-# CUSTOM X CLIPBOARD
-# copy
-xccopy() {
-    all=""
-    for var in "$@"
-    do
-        all=($all $var)
-    done
-    echo $all | xclip -selection c
-}
-alias copy="xccopy"
-# paste
-xcpaste() {
-    echo $(xclip -selection c -o)
-}
-alias paste="xcpaste"
 
 # CUSTOM CD (CD & LS)
 c() {
@@ -109,11 +47,9 @@ pullall() {
     ls | xargs -P10 -I{} git -C {} pull
 }
 
-# SCREENKEY COMMAND
-alias sk="killall screenkey &>/dev/null || screenkey"
-
 # UGLY GIT DRIVE BY COMMIT
 alias gitdriveby='git add --all; git commit -m "$(curl -s http://whatthecommit.com/index.txt )"; git push'
+
 
 # CD UP SCRIPT
 alias ..="cd .."
@@ -122,13 +58,18 @@ alias ....="cd ../../../"
 alias .....="cd ../../../.."
 
 # GOOGLE FUNCTION
-function google() { 
+function google() {
     all=""
     for var in "$@"
     do
         all=($all $var)
     done
-	xdg-open "http://www.google.com/search?q=$all" &; 
+	open "http://www.google.com/search?q=$all" &;
+}
+
+# MOV TO GIF FUNCTION
+function togif() {
+    ffmpeg -i $1 -pix_fmt rgb8 -r 10 $1.gif && gifsicle -O3 $1.gif -o $1.gif
 }
 
 # FUZZY HISTORY CMD SEARCHING [ARR-UP]
@@ -147,8 +88,12 @@ fi
 # GREETING
 source $ZSH/custom/greet.sh
 
-# TODO: REMOVE, ONLY FOR SCHOOL
-alias sew="xdg-open ~/School/SEW/"
-alias insy="xdg-open ~/School/INSY/"
-alias syt="xdg-open ~/School/SYT/"
+# PATH
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/flutter/bin
 
+alias git-rm-untracked="git rm -r --cached . && git add . && git commit -am 'Remove ignored files'"
