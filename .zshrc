@@ -78,7 +78,7 @@ if [[ "${terminfo[kcuu1]}" != "" ]]; then
 	zle -N up-line-or-beginning-search
 	bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
 fi
-# FUZZY HISTORY CMD SEARCHING [ARR-UP]
+# FUZZY HISTORY CMD SEARCHING [ARR-DOWN]
 if [[ "${terminfo[kcud1]}" != "" ]]; then
 	autoload -U down-line-or-beginning-search
 	zle -N down-line-or-beginning-search
@@ -87,6 +87,10 @@ fi
 
 # GREETING
 source $ZSH/custom/greet.sh
+function clean() {
+    clear
+    source $ZSH/custom/greet.sh
+}
 
 # PATH
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -96,4 +100,4 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/flutter/bin
 
-alias git-rm-untracked="git rm -r --cached . && git add . && git commit -am 'Remove ignored files'"
+alias git-rm-untracked="git add . && git commit -m 'Remove ignored files 1/2' && git rm -r --cached . && git add . && git commit -am 'Remove ignored files 2/2'"
