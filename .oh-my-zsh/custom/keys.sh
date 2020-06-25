@@ -17,7 +17,7 @@ bindkey "^s" add_sudo
 
 # EXPLORER HERE
 function explorer_here() {
-    xdg-open . &
+    open . &
 }
 zle -N explorer_here
 bindkey "^e" explorer_here
