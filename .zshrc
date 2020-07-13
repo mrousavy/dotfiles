@@ -69,7 +69,17 @@ function google() {
 
 # MOV TO GIF FUNCTION
 function togif() {
-    ffmpeg -i $1 -pix_fmt rgb8 -r 10 $1.gif && gifsicle -O3 $1.gif -o $1.gif
+    local fps="${2:-15}"
+    local width="${3:-400}"
+    echo "Creating color palette..."
+    ffmpeg -i $1 -vframes 1 -vf scale="$width":-1 /tmp/snippet.jpg
+    ffmpeg -i /tmp/snippet.jpg -vf palettegen /tmp/palette.png
+    echo "Converting $1 with $fps fps at $width px..."
+    ffmpeg -i $1 -i /tmp/palette.png -filter_complex "fps="$fps",scale=w="$width":h=-1:flags=lanczos[x];[x][1:v]paletteuse" $1.gif
+    echo "Optimizing GIF..."
+    gifsicle -O3 $1.gif -o $1.gif
+    rm /tmp/snippet.jpg
+    rm /tmp/palette.png
 }
 
 # FUZZY HISTORY CMD SEARCHING [ARR-UP]
@@ -101,3 +111,5 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/flutter/bin
 
 alias git-rm-untracked="git add . && git commit -m 'Remove ignored files 1/2' && git rm -r --cached . && git add . && git commit -am 'Remove ignored files 2/2'"
+
+alias code="code-insiders"
