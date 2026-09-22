@@ -12,7 +12,7 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = (".zshrc", ".vimrc", ".hushlogin")
+FILES = (".zshrc", ".vimrc", ".hushlogin", ".config/git/ignore")
 
 
 def run(*args, **kwargs):
@@ -48,6 +48,7 @@ class Installer:
 
     def link(self, name):
         source, destination = ROOT / name, self.target / name
+        self.check_parent(destination)
         if destination.is_symlink() and destination.resolve() == source:
             print(f"Already linked: {name}")
             return
@@ -56,11 +57,14 @@ class Installer:
         destination.symlink_to(source)
         print(f"Linked {destination}")
 
-    def plugin(self, plugin):
-        destination = self.target / plugin["path"]
+    def check_parent(self, destination):
         parent = destination.parent.resolve()
         if parent != self.target and self.target not in parent.parents:
-            raise RuntimeError(f"Refusing plugin installation through a directory symlink outside {self.target}: {destination}")
+            raise RuntimeError(f"Refusing installation through a directory symlink outside {self.target}: {destination}")
+
+    def plugin(self, plugin):
+        destination = self.target / plugin["path"]
+        self.check_parent(destination)
         if destination.is_dir() and (destination / ".git").is_dir():
             current = output("git", "-C", destination, "rev-parse", "HEAD")
             origin = output("git", "-C", destination, "remote", "get-url", "origin")

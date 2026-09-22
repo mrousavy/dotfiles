@@ -28,6 +28,8 @@ do not restore them from Git history unless explicitly requested.
 ## Editing and updating
 
 - Keep comments above settings. Preserve the user's existing preferences.
+- Keep the global Git ignore limited to `.DS_Store`, `.*.sw?` and `*.un~`;
+  the user explicitly rejected the broader `._*` pattern.
 - Do not collect credentials, shell history, SSH keys, private account settings,
   or arbitrary home-directory files. Local overrides remain untracked.
 - Never reset a dirty plugin checkout or overwrite dotfiles without backups.

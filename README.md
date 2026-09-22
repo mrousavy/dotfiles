@@ -61,6 +61,7 @@ if Apple's bundled Vim is older. The installer checks the required features.
 | Completion | Case-insensitive Tab matching, highlighted selection, arrow-key navigation |
 | zsh plugins | Homebrew's zsh-autosuggestions and zsh-syntax-highlighting |
 | Login banner | `.hushlogin` hides “Last login” |
+| Global Git ignore | `.DS_Store`, Vim swap files (`.*.sw?`), and Vim undo files (`*.un~`) |
 | Vim | Absolute line numbers, no cursor-line highlight, wrapping, two-space indentation, smart-case search, command suggestions while typing |
 | Comments/browser | Vim's bundled `comment` package and netrw; no separate commentary or file-tree plugin |
 | Vim plugins | GitGutter, vim-lumen and vim-one, pinned in plugins.json |
@@ -75,6 +76,12 @@ The `holyclean` command is preserved: it runs **`git clean -dfX`**, deleting
 ignored files such as build output. Use it deliberately. Its optional sound is
 configured with `HOLYCLEAN_SOUND` in `.zshrc.local`; no old machine's audio path
 or media file is included.
+
+The global Git ignore is installed at `~/.config/git/ignore`, Git's default
+location. It contains only the three patterns listed above. Project-specific
+ignores belong in each repository's `.gitignore`. If you customize
+`XDG_CONFIG_HOME` or `core.excludesFile`, configure Git to use this file at its
+installed location. Git identity and authentication settings remain local.
 
 ## Optional macOS settings
 
@@ -134,8 +141,9 @@ are not prerequisites for these dotfiles.
 
 ## Backups, local changes, and repeat runs
 
-- `install.sh` links `.zshrc`, `.vimrc` and `.hushlogin` to this checkout. Keep the
-  checkout in place; editing a linked file edits the repository.
+- `install.sh` links `.zshrc`, `.vimrc`, `.hushlogin` and `.config/git/ignore`
+  to this checkout. Keep the checkout in place; editing a linked file edits
+  the repository.
 - Replaced files, links and plugin directories go to
   `~/.local/state/dotfiles/backups/<timestamp>/`, with a `manifest.json` mapping
   original paths to backups. Restore by removing the installed link and moving
@@ -153,7 +161,7 @@ are not prerequisites for these dotfiles.
 - Put optional personal Homebrew packages in ignored `Brewfile.local` and run
   `brew bundle --file=Brewfile.local` separately.
 - `--skip-packages` skips package installation but verifies dependencies;
-  `--link-only` only installs the three links (plugins must already exist).
+  `--link-only` only installs the four links (plugins must already exist).
 - `--target /some/directory` installs into another destination for testing.
   Never point it at the repository itself. It does not change HOME or redirect
   Homebrew: a full install still uses the Mac's Homebrew installation.

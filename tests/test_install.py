@@ -33,18 +33,38 @@ class InstallTests(unittest.TestCase):
             target.mkdir()
             (target / ".zshrc").write_text("# original config\n")
             (target / ".vimrc").symlink_to(target / "missing-original")
+            git_config = target / ".config/git"
+            git_config.mkdir(parents=True)
+            (git_config / "ignore").write_text("# original ignore\nlocal-only\n")
+            (git_config / "config").write_text("# keep this config\n")
             self.invoke(target, "--link-only")
             manifests = list(target.glob(".local/state/dotfiles/backups/*/manifest.json"))
             self.assertEqual(1, len(manifests))
             records = json.loads(manifests[0].read_text())
-            self.assertEqual(2, len(records))
+            self.assertEqual(3, len(records))
             saved = {Path(r["original"]).name: Path(r["backup"]) for r in records}
             self.assertEqual("# original config\n", saved[".zshrc"].read_text())
             self.assertTrue(saved[".vimrc"].is_symlink())
+            self.assertEqual("# original ignore\nlocal-only\n", saved["ignore"].read_text())
+            self.assertEqual("# keep this config\n", (git_config / "config").read_text())
             for name in installer.FILES:
                 self.assertEqual(ROOT / name, (target / name).resolve())
             self.invoke(target, "--link-only")
             self.assertEqual(manifests, list(target.glob(".local/state/dotfiles/backups/*/manifest.json")))
+
+    def test_config_parent_cannot_redirect_links_outside_target(self):
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "target"
+            elsewhere = Path(temp) / "other"
+            target.mkdir()
+            (elsewhere / "git").mkdir(parents=True)
+            original = elsewhere / "git/ignore"
+            original.write_text("keep me\n")
+            (target / ".config").symlink_to(elsewhere)
+            with self.assertRaisesRegex(RuntimeError, "directory symlink"):
+                installer.Installer(target).link(".config/git/ignore")
+            self.assertEqual("keep me\n", original.read_text())
+            self.assertFalse(original.is_symlink())
 
     def test_failed_download_preserves_existing_plugin(self):
         with tempfile.TemporaryDirectory() as temp:
