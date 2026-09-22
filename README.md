@@ -10,9 +10,11 @@ project. These are terminal-output previews, not native macOS screenshots;
 font rendering can differ slightly. The Vim sidebar is narrowed and its help
 banner hidden with netrw's `I` key.
 
-**zsh — greeting, bold input, dim folder prompt, and highlighted completion**
+**zsh — minimal Apple-inspired palette, light and dark**
 
-![zsh with a centered greeting and a highlighted folder completion](docs/images/zsh.png)
+![zsh light palette with blue accents and highlighted folder completion](docs/images/zsh-light.png)
+
+![zsh dark palette with blue accents and highlighted folder completion](docs/images/zsh.png)
 
 **Vim — One Light**
 
@@ -57,7 +59,7 @@ if Apple's bundled Vim is older. The installer checks the required features.
 
 | Component | Configuration |
 | --- | --- |
-| zsh | Dim, adaptive folder prompt; bold input; centered time-of-day greeting; `ls` after changing directories; `..`, `...`, `....` aliases |
+| zsh | Minimal adaptive palette: gray folder, blue accents, green strings, red errors; bold input; centered greeting; `ls` after changing directories; `..`, `...`, `....` aliases |
 | Completion | Case-insensitive Tab matching, highlighted selection, arrow-key navigation |
 | zsh plugins | Homebrew's zsh-autosuggestions and zsh-syntax-highlighting |
 | Login banner | `.hushlogin` hides “Last login” |
@@ -66,6 +68,11 @@ if Apple's bundled Vim is older. The installer checks the required features.
 | Comments/browser | Vim's bundled `comment` package and netrw; no separate commentary or file-tree plugin |
 | Vim plugins | GitGutter, vim-lumen and vim-one, pinned in plugins.json |
 | Vim appearance | **One Light / One Dark**, selected automatically from macOS appearance |
+
+The shell's palette is defined directly in `.zshrc`, using the existing plugins.
+It checks macOS appearance before each new prompt and updates the colors when
+it changes. Press Enter after switching appearance to refresh an idle prompt.
+Terminal's adaptive profile controls the background and ordinary output colors.
 
 Vim-lumen compiles a small Swift helper inside its plugin directory. It runs as
 a child process while Vim is open and waits for appearance-change notifications.
