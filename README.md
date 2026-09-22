@@ -3,6 +3,25 @@
 My small zsh + Vim setup for a new Mac. This replaces the old KDE/Konsole setup;
 the Linux configuration remains available in Git history.
 
+## Preview
+
+Rendered from isolated zsh and Vim sessions using these dotfiles and a demo
+project. These are terminal-output previews, not native macOS screenshots;
+font rendering can differ slightly. The Vim sidebar is narrowed and its help
+banner hidden with netrw's `I` key.
+
+**zsh — greeting, bold input, dim folder prompt, and highlighted completion**
+
+![zsh with a centered greeting and a highlighted folder completion](docs/images/zsh.png)
+
+**Vim — One Light**
+
+![Vim with One Light, a netrw sidebar, and GitGutter change markers](docs/images/vim-light.png)
+
+**Vim — One Dark**
+
+![Vim with One Dark, a netrw sidebar, and GitGutter change markers](docs/images/vim-dark.png)
+
 ## New Mac
 
 Requires **macOS 26 or later**, Xcode Command Line Tools (Git, Swift and Python 3),
