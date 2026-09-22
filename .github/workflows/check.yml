@@ -1,0 +1,20 @@
+name: Check dotfiles
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax and backup/idempotency tests
+        run: |
+          bash -n install.sh
+          zsh -n .zshrc
+          python3 -m compileall -q scripts tests
+          python3 -m unittest discover -s tests -v
+          ./install.sh --dry-run
+      - name: Install into an isolated directory and verify
+        run: |
+          ./install.sh --target "$RUNNER_TEMP/dotfiles-target"
+          ./install.sh --skip-packages --target "$RUNNER_TEMP/dotfiles-target"

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "vim-gitgutter",
+    "url": "https://github.com/airblade/vim-gitgutter.git",
+    "commit": "90b75207bd9b55d8ac4af15f72b4e935462014d0",
+    "path": ".vim/pack/airblade/start/vim-gitgutter"
+  },
+  {
+    "name": "vim-lumen",
+    "url": "https://github.com/vimpostor/vim-lumen.git",
+    "commit": "97157aac9f0d24c144a3defdfe5057ee61e18dcb",
+    "path": ".vim/pack/vimpostor/start/vim-lumen"
+  },
+  {
+    "name": "vim-one",
+    "url": "https://github.com/rakr/vim-one.git",
+    "commit": "187f5c85b682c1933f8780d4d419c55d26a82e24",
+    "path": ".vim/pack/rakr/start/vim-one"
+  }
+]
