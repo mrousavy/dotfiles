@@ -85,10 +85,39 @@ These are deliberately separate from shell/editor installation:
 python3 scripts/macos.py --wallpaper --dry-run
 python3 scripts/macos.py --wallpaper
 
+# Restore Finder, Dock and native window-tiling preferences.
+python3 scripts/macos.py --finder --dock --windows --dry-run
+python3 scripts/macos.py --finder --dock --windows
+
 # Restore the captured adaptive Basic-derived Terminal settings.
 python3 scripts/macos.py --terminal --dry-run
 python3 scripts/macos.py --terminal
 ```
+
+Select any combination of these flags:
+
+| Flag | Preferences restored |
+| --- | --- |
+| `--finder` | Show hidden files/folders and all filename extensions |
+| `--dock` | Auto-hide on, zero reveal delay, normal slide animation, recent/suggested apps hidden, magnification on, icon sizes 52 / 71, manual resizing unlocked |
+| `--windows` | Native left/right edge tiling and top-edge fill enabled, tiled-window margins off |
+| `--wallpaper` | Ordinary wallpaper clicks do not hide windows |
+| `--terminal` | Adaptive Dotfiles Terminal profile |
+
+The Dock's animation-speed override is removed to restore the macOS default
+animation. Finder, Dock and window options update individual preference keys;
+pinned Dock apps and unrelated settings are preserved. Settings are read back
+after writing, and repeat runs skip matching values.
+
+Log out and back in for all desktop changes to take effect. To refresh Finder
+and Dock sooner, finish any Finder operations, then run:
+
+```sh
+killall Finder
+killall Dock
+```
+
+The script does not restart these apps automatically.
 
 The Terminal import requires **Apple Terminal to be closed** so it cannot
 overwrite preferences on exit. Run it from another terminal app or an agent's
@@ -97,9 +126,11 @@ profile, retaining other profiles. The profile captures the current font and
 window preferences without fixed RGB colors, so it follows system appearance.
 The separate Vim colorscheme supplies One Light/Dark inside the editor.
 
-Existing macOS preference domains are backed up first. No other Dock, app,
-account, security, keyboard, or window-manager preferences are applied. Magnet
-and other personal apps are not prerequisites for these dotfiles.
+Each changed preference domain is backed up first in
+`~/.local/state/dotfiles/backups/<timestamp>/<domain>.plist`. Keep these backups
+local; they contain the previous preferences for that Mac. Only the settings
+listed above are restored by this repository. Magnet and other personal apps
+are not prerequisites for these dotfiles.
 
 ## Backups, local changes, and repeat runs
 

@@ -14,10 +14,12 @@ do not restore them from Git history unless explicitly requested.
    to this checkout, so do not install from a temporary directory.
 4. Run `./install.sh --dry-run`, then `./install.sh`, then
    `python3 scripts/doctor.py`. Read and resolve failures before reporting success.
-5. Restore `--wallpaper` and/or `--terminal` with scripts/macos.py when included
-   in the user's requested setup. Never quit Terminal and its running sessions
-   on their behalf just to import a profile. Other shell tools can run the
-   import after the user has closed Terminal.
+5. Restore the requested `--finder`, `--dock`, `--windows`, `--wallpaper` and/or
+   `--terminal` preferences with scripts/macos.py. Preview with `--dry-run`.
+   Finder/Dock/window options preserve unrelated settings and pinned apps;
+   refresh instructions are in README.md. Never quit Terminal and its running
+   sessions on the user's behalf just to import a profile. Other shell tools
+   can run the import after the user has closed Terminal.
 6. Tell the user which settings changed, where backups are, and which manual
    checks remain. Start a new Terminal session; verify the greeting, dim prompt,
    bold input, case-insensitive completion and highlighted selection. Open Vim
