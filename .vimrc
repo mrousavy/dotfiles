@@ -1,191 +1,84 @@
-" Disable Vi emulation
-set nocompatible
+" Color code according to the file's syntax.
+syntax on
 
-" Pathogen Plugin Manager
-execute pathogen#infect()
-
-" Filetypes
-set history=500
-
-" Filetype indenting
+" Detect file types and load their settings and indentation rules.
 filetype plugin indent on
 
-" NEOVIM
-" Block Cursor in INPUT
-set guicursor=
+" Enable bundled comment toggling: gcc for a line, gc for a selection or motion.
+packadd comment
 
-" True Color Support
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
+" Show absolute line numbers on every line.
+set number norelativenumber
 
-" Color Theme - ONE Dark/Light
-colorscheme one
-let g:one_allow_italics = 1
-if $LIGHT_THEME == 'true'
-    set background=light
-else
-    set background=dark
-endif
+" Disable highlighting of the cursor's line.
+set nocursorline
 
-" Color Theme - ONE Dark/Light status bar airline
-let g:airline_theme='one'
+" Keep five lines of vertical context around the cursor.
+set scrolloff=5
 
-" Auto outside-changes
-set autoread
+" Search without case sensitivity unless the pattern contains uppercase letters.
+set ignorecase smartcase
 
-" For extra shortcuts
-let mapleader = ","
-let g:maploader= ","
-
-" Quicksave
-nmap <leader>w :w!<cr>
-
-" sudo save
-command W w !sudo tee > /dev/null %
-
-" Enable wildmenu
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-set wildignore+=*/.git*
-
-" Caret ruler
-set ruler
-
-" Command bar height
-"set cmdheight=2
-
-" Discarded buffers get hidden
-set hid
-
-" Fix backspace
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Case-insensitive and smart search
-set ignorecase
-set smartcase
-
-" Find results highlighting
-set hlsearch
+" Preview search matches while typing and highlight all matches.
 set incsearch
+set hlsearch
 
-" RegEx
-set magic
-
-" Bracket highlighting
-set showmatch
-set mat=2
-
-" Left margin
-set foldcolumn=1
-
-" Syntax and filetype
-syntax enable
-set ffs=unix,dos,mac
-
-" Disable Vim bck files
-set nobackup
-set nowb
-set noswapfile
-
-" Tabs
+" Insert spaces for Tab and use two-space indentation and editing steps.
 set expandtab
-set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
 
-" Linebreak on 500 chars
-set lbr
-set tw=500
+" Allow Backspace over indentation, line breaks, and the start of an insertion.
+set backspace=indent,eol,start
 
-" Smart auto indenting
-set ai
-set si
-set wrap
+" Keep unsaved buffers in memory when switching to another file.
+set hidden
 
-" Always show status line
+" Show completion suggestions automatically while typing colon commands.
+set wildmenu
+set wildoptions+=pum
+" Show choices without inserting one until you select it.
+set wildmode=noselect:lastused,full
+augroup CommandLineSuggestions
+  autocmd!
+  autocmd CmdlineChanged : call wildtrigger()
+augroup END
+
+" Open new vertical splits to the right and horizontal splits below.
+set splitright
+set splitbelow
+
+" Always show a status line, even with only one window.
 set laststatus=2
 
-function! HasPaste()                                                                           
-  if &paste             
-    return 'PASTE MODE  '
-  endif                 
-  return ''             
-endfunction
+" Use Space as the leader key; Space then h clears search highlighting.
+" GitGutter also uses Space h p/s/u to preview/stage/undo a hunk.
+let mapleader = " "
+nnoremap <leader>h :nohlsearch<CR>
 
-" Format statusline
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" GitGutter loads automatically from ~/.vim/pack/airblade/start/vim-gitgutter.
+" Keep the change-marker column visible so code does not shift horizontally.
+set signcolumn=yes
 
-" Line number
-set number
-set relativenumber
+" Refresh Git change markers after 100 ms of inactivity.
+" This also controls Vim's idle delay before writing its swap file.
+set updatetime=100
 
-" 0 -> First readabale character
-map 0 ^
+" Toggle the file-browser sidebar with Space then e in Normal mode.
+nnoremap <silent> <leader>e :Lexplore<CR>
 
-" Alt + J/K line up/down
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
+" Follow macOS light/dark appearance at startup and while Vim is open.
+" vim-lumen loads automatically and runs its Swift helper only with Vim.
+let g:lumen_startup_overwrite = 1
 
-" Code folding
-setlocal foldmethod=syntax
-noremap <space> <C-C>za
+" Use full RGB colors for the One Light and One Dark palettes.
+set termguicolors
 
-" Delete useless whitespaces on save
-fun! CleanExtraSpaces()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	silent! %s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
-endfun
+" vim-one supplies both variants; vim-lumen selects via background=light/dark.
+let g:lumen_light_colorscheme = 'one'
+let g:lumen_dark_colorscheme = 'one'
 
-if has("autocmd")
-	autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+" Optional machine-specific settings, never tracked in this repository.
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
 endif
-
-" Windows ^M fix
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" 1/2 Page scrolling 
-nnoremap <C-Down> <C-e><CR>
-nnoremap <C-Up> <Up><Up><C-y><CR>
-
-" Paste mode toggle
-map <leader>pp :setlocal paste!<cr>
-
-set cursorline
-
-" Fix lag - render lazy
-set lazyredraw
-
-" Fix mouse copying from terminal
-"set mouse+=a
-
-" PLUGINS
-" Open NERDTree if no file is open
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" Shortcut and abbreviation - Nerd Tree
-cnoreabbrev nt NERDTree
-map <F2> :NERDTreeToggle<CR>
-
-" Shortcut and abbreviation - LaTeX Live Previews
-autocmd Filetype tex setl updatetime=1500
-let g:livepreview_previewer = 'okular'
-let g:livepreview_engine = 'latexmk -pdf'
-cnoreabbrev texp NERDTree
-map <F5> :LLPStartPreview<CR>
-
-" Spell check
-map <F3> :setlocal spell! spelllang=en_us<CR>
-

@@ -1,115 +1,105 @@
-export ZSH="/Users/mrousavy/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+# Prefer Homebrew's Vim and tools on Apple silicon or Intel Macs.
+if [[ -z ${HOMEBREW_PREFIX:-} ]]; then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    export HOMEBREW_PREFIX=/opt/homebrew
+  elif [[ -x /usr/local/bin/brew ]]; then
+    export HOMEBREW_PREFIX=/usr/local
+  fi
+fi
+if [[ -n ${HOMEBREW_PREFIX:-} ]]; then
+  typeset -U path
+  path=("$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin" $path)
+fi
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
-ZSH_THEME="mrousavy"
+autoload -Uz add-zsh-hook
 
-# IN-CASESENSITIVE COMMAND SEARCHING
-CASE_SENSITIVE="false"
+# List all files/folders (ls) after a cd
+list_after_cd() {
+  ls
+}
+add-zsh-hook chpwd list_after_cd
 
-# AUTO COMMAND CORRECTION
-ENABLE_CORRECTION="true"
+# Shortcut .. to cd ..
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
-# HISTORY
-SAVEHIST=100
-HISTSIZE=50
+# Remove ignored Git files (including build outputs); this is destructive.
+# Optionally set HOLYCLEAN_SOUND in ~/.zshrc.local to play a local audio file.
+holyclean() {
+  if [[ -n ${HOLYCLEAN_SOUND:-} && -r $HOLYCLEAN_SOUND ]]; then
+    afplay "$HOLYCLEAN_SOUND" &>/dev/null &!
+  fi
+  git clean -dfX
+}
 
-# LOADED PLUGINS
-plugins=(
-  git
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-)
+# Theme
+PROMPT=$'%f%{\e[2m%}%1~%{\e[22m%} › '
+RPROMPT=''
 
-# RUN EXTRA FILES
-source $ZSH/oh-my-zsh.sh
-source $ZSH/custom/keys.sh
+# Centered greeting for new interactive terminals.
+if [[ -o interactive && -t 1 ]]; then
+  () {
+    emulate -L zsh
+    setopt multibyte
+    local period emoji greeting
+    local -i hour=10#${(%):-%D{%H}}
+    local -i padding width
 
-# CUSTOM CD (CD & LS)
-c() {
-	cd $1;
-    if [ $? -eq 0 ]; then
-	    ls;
+    if (( hour >= 5 && hour < 12 )); then
+      period=morning emoji=🌅
+    elif (( hour >= 12 && hour < 17 )); then
+      period=afternoon emoji=🌞
+    elif (( hour >= 17 && hour < 22 )); then
+      period=evening emoji=🌇
+    else
+      period=night emoji=🌙
     fi
-}
-alias cd="c"
 
-# CUSTOM MKDIR (MKDIR & CD)
-mkcd() {
-	mkdir $1;
-	cd $1;
-}
-alias mkdir="mkcd"
-
-pullall() {
-    echo "Pulling all git subdirectories.."
-    ls | xargs -P10 -I{} git -C {} pull
-}
-
-# UGLY GIT DRIVE BY COMMIT
-alias gitdriveby='git add --all; git commit -m "$(curl -s http://whatthecommit.com/index.txt )"; git push'
-
-
-# CD UP SCRIPT
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../../"
-alias .....="cd ../../../.."
-
-# GOOGLE FUNCTION
-function google() {
-    all=""
-    for var in "$@"
-    do
-        all=($all $var)
-    done
-	open "http://www.google.com/search?q=$all" &;
-}
-
-# MOV TO GIF FUNCTION
-function togif() {
-    local fps="${2:-15}"
-    local width="${3:-400}"
-    echo "Creating color palette..."
-    ffmpeg -i $1 -vframes 1 -vf scale="$width":-1 /tmp/snippet.jpg
-    ffmpeg -i /tmp/snippet.jpg -vf palettegen /tmp/palette.png
-    echo "Converting $1 with $fps fps at $width px..."
-    ffmpeg -i $1 -i /tmp/palette.png -filter_complex "fps="$fps",scale=w="$width":h=-1:flags=lanczos[x];[x][1:v]paletteuse" $1.gif
-    echo "Optimizing GIF..."
-    gifsicle -O3 $1.gif -o $1.gif
-    rm /tmp/snippet.jpg
-    rm /tmp/palette.png
-}
-
-# FUZZY HISTORY CMD SEARCHING [ARR-UP]
-if [[ "${terminfo[kcuu1]}" != "" ]]; then
-	autoload -U up-line-or-beginning-search
-	zle -N up-line-or-beginning-search
-	bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
-# FUZZY HISTORY CMD SEARCHING [ARR-DOWN]
-if [[ "${terminfo[kcud1]}" != "" ]]; then
-	autoload -U down-line-or-beginning-search
-	zle -N down-line-or-beginning-search
-	bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+    greeting="Good ${period}, ${USERNAME}. ${emoji}"
+    width=${(m)#greeting}
+    padding=$(( (COLUMNS - width) / 2 ))
+    (( padding < 0 )) && padding=0
+    printf '\n%*s%s\n\n' "$padding" '' "$greeting"
+  }
 fi
 
-# GREETING
-source $ZSH/custom/greet.sh
-function clean() {
-    clear
-    source $ZSH/custom/greet.sh
+# Bold only the editable command line, not command output.
+zle_highlight=("${(@)zle_highlight:#default:*}" 'default:bold')
+
+# Case-insensitive Tab completion.
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# Highlight the selected completion; navigate with Tab or arrow keys.
+zmodload zsh/complist
+zstyle ':completion:*' menu select
+# Reverse foreground/background for a visible selection in light and dark modes.
+zstyle ':completion:*' list-colors 'ma=7'
+
+# Keep machine-specific settings and secrets out of the repository.
+[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Suggest commands from history; Right Arrow accepts the suggestion.
+if [[ -r ${HOMEBREW_PREFIX:-}/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
+
+# Load syntax highlighting after other plugins and line-editor bindings.
+if [[ -r ${HOMEBREW_PREFIX:-}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+# Preserve bold command input alongside syntax colors.
+() {
+  local style
+  for style in ${(k)ZSH_HIGHLIGHT_STYLES}; do
+    case ${ZSH_HIGHLIGHT_STYLES[$style]} in
+      none) ZSH_HIGHLIGHT_STYLES[$style]=bold ;;
+      '') ;; # Empty styles inherit their parent style.
+      *bold*) ;;
+      *) ZSH_HIGHLIGHT_STYLES[$style]+=,bold ;;
+    esac
+  done
 }
-
-# PATH
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/flutter/bin
-
-alias git-rm-untracked="git add . && git commit -m 'Remove ignored files 1/2' && git rm -r --cached . && git add . && git commit -am 'Remove ignored files 2/2'"
-
-alias code="code-insiders"

@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.pyc
+.*.sw?
+*.un~
+.zshrc.local
+.vimrc.local
+Brewfile.local
+Brewfile.lock.json
