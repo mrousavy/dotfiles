@@ -62,6 +62,7 @@ if Apple's bundled Vim is older. The installer checks the required features.
 | zsh | Minimal adaptive palette: gray folder, blue accents, green strings, red errors; bold input; centered greeting; `ls` after changing directories; `..`, `...`, `....` aliases |
 | Completion | Case-insensitive Tab matching, highlighted selection, arrow-key navigation |
 | zsh plugins | Homebrew's zsh-autosuggestions and zsh-syntax-highlighting |
+| History | Keep the newest occurrence of each command; skip duplicate search results and saved entries |
 | Login banner | `.hushlogin` hides “Last login” |
 | Global Git ignore | `.DS_Store`, Vim swap files (`.*.sw?`), and Vim undo files (`*.un~`) |
 | Vim | Absolute line numbers, no cursor-line highlight, wrapping, two-space indentation, smart-case search, command suggestions while typing |

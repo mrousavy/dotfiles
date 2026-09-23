@@ -13,6 +13,15 @@ fi
 
 autoload -Uz add-zsh-hook
 
+# Keep only the newest occurrence of each command in history.
+setopt HIST_IGNORE_ALL_DUPS
+
+# Omit older duplicates when writing the history file.
+setopt HIST_SAVE_NO_DUPS
+
+# Skip repeated results when searching history in the line editor.
+setopt HIST_FIND_NO_DUPS
+
 # List all files/folders (ls) after a cd
 list_after_cd() {
   ls
