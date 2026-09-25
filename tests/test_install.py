@@ -52,6 +52,24 @@ class InstallTests(unittest.TestCase):
             self.invoke(target, "--link-only")
             self.assertEqual(manifests, list(target.glob(".local/state/dotfiles/backups/*/manifest.json")))
 
+    def test_agent_instructions_link_to_one_shared_file(self):
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp)
+            (target / ".claude").mkdir()
+            (target / ".claude/CLAUDE.md").write_text("# original instructions\n")
+            (target / ".codex").mkdir()
+            (target / ".codex/config.toml").write_text("# keep this config\n")
+            self.invoke(target, "--link-only")
+            for name in (installer.AGENTS_MD, *installer.AGENT_LINKS):
+                self.assertEqual(ROOT / installer.AGENTS_MD, (target / name).resolve())
+            manifests = list(target.glob(".local/state/dotfiles/backups/*/manifest.json"))
+            records = json.loads(manifests[0].read_text())
+            self.assertEqual(["CLAUDE.md"], [Path(r["original"]).name for r in records])
+            self.assertEqual("# original instructions\n", Path(records[0]["backup"]).read_text())
+            self.assertEqual("# keep this config\n", (target / ".codex/config.toml").read_text())
+            self.invoke(target, "--link-only")
+            self.assertEqual(manifests, list(target.glob(".local/state/dotfiles/backups/*/manifest.json")))
+
     def test_config_parent_cannot_redirect_links_outside_target(self):
         with tempfile.TemporaryDirectory() as temp:
             target = Path(temp) / "target"

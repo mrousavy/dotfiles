@@ -65,6 +65,7 @@ if Apple's bundled Vim is older. The installer checks the required features.
 | History | Up/Down Arrow only step through commands that start with the typed text; keep the newest occurrence of each command; skip duplicate search results and saved entries |
 | Login banner | `.hushlogin` hides “Last login” |
 | Global Git ignore | `.DS_Store`, Vim swap files (`.*.sw?`), and Vim undo files (`*.un~`) |
+| Agent instructions | One global instructions file for Claude Code and Codex, `~/.config/ai/AGENTS.md` |
 | Vim | Absolute line numbers, no cursor-line highlight, wrapping, two-space indentation, smart-case search, command suggestions while typing |
 | Comments/browser | Vim's bundled `comment` package and netrw; no separate commentary or file-tree plugin |
 | Vim plugins | GitGutter, vim-lumen and vim-one, pinned in plugins.json |
@@ -90,6 +91,12 @@ location. It contains only the three patterns listed above. Project-specific
 ignores belong in each repository's `.gitignore`. If you customize
 `XDG_CONFIG_HOME` or `core.excludesFile`, configure Git to use this file at its
 installed location. Git identity and authentication settings remain local.
+
+Global instructions for coding agents live in `.config/ai/AGENTS.md` and are
+installed at `~/.config/ai/AGENTS.md`. Claude Code reads global instructions
+from `~/.claude/CLAUDE.md` and Codex from `~/.codex/AGENTS.md`, so the
+installer links both to the same file. Agents pick up edits in their next
+session. The top-level `AGENTS.md` is for agents working on this repository.
 
 ## Optional macOS settings
 
@@ -149,8 +156,9 @@ are not prerequisites for these dotfiles.
 
 ## Backups, local changes, and repeat runs
 
-- `install.sh` links `.zshrc`, `.vimrc`, `.hushlogin` and `.config/git/ignore`
-  to this checkout. Keep the checkout in place; editing a linked file edits
+- `install.sh` links `.zshrc`, `.vimrc`, `.hushlogin`, `.config/git/ignore`,
+  `.config/ai/AGENTS.md`, `.claude/CLAUDE.md` and `.codex/AGENTS.md` to this
+  checkout. Keep the checkout in place; editing a linked file edits
   the repository.
 - Replaced files, links and plugin directories go to
   `~/.local/state/dotfiles/backups/<timestamp>/`, with a `manifest.json` mapping
@@ -169,7 +177,7 @@ are not prerequisites for these dotfiles.
 - Put optional personal Homebrew packages in ignored `Brewfile.local` and run
   `brew bundle --file=Brewfile.local` separately.
 - `--skip-packages` skips package installation but verifies dependencies;
-  `--link-only` only installs the four links (plugins must already exist).
+  `--link-only` only installs the links (plugins must already exist).
 - `--target /some/directory` installs into another destination for testing.
   Never point it at the repository itself. It does not change HOME or redirect
   Homebrew: a full install still uses the Mac's Homebrew installation.

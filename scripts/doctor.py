@@ -24,7 +24,8 @@ def main():
     target = args.target.expanduser().resolve()
     if not args.vim:
         raise RuntimeError("Vim is not installed")
-    for name in (".zshrc", ".vimrc", ".hushlogin", ".config/git/ignore"):
+    for name in (".zshrc", ".vimrc", ".hushlogin", ".config/git/ignore",
+                 ".config/ai/AGENTS.md", ".claude/CLAUDE.md", ".codex/AGENTS.md"):
         if not (target / name).is_file():
             raise RuntimeError(f"Missing {target / name}")
     for plugin in json.loads((ROOT / "plugins.json").read_text()):

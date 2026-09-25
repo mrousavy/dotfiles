@@ -12,7 +12,10 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = (".zshrc", ".vimrc", ".hushlogin", ".config/git/ignore")
+AGENTS_MD = ".config/ai/AGENTS.md"
+FILES = (".zshrc", ".vimrc", ".hushlogin", ".config/git/ignore", AGENTS_MD)
+# Claude Code and Codex only read global instructions from their own directories.
+AGENT_LINKS = (".claude/CLAUDE.md", ".codex/AGENTS.md")
 
 
 def run(*args, **kwargs):
@@ -46,8 +49,8 @@ class Installer:
         (self.backups / "manifest.json").write_text(json.dumps(self.records, indent=2) + "\n")
         print(f"Backed up {path} to {saved}")
 
-    def link(self, name):
-        source, destination = ROOT / name, self.target / name
+    def link(self, name, source_name=None):
+        source, destination = ROOT / (source_name or name), self.target / name
         self.check_parent(destination)
         if destination.is_symlink() and destination.resolve() == source:
             print(f"Already linked: {name}")
@@ -113,6 +116,8 @@ def main():
                 print(f"Plugin: {plugin['path']} @ {plugin['commit']}")
         for name in FILES:
             print(f"Back up if necessary, then link {target / name} -> {ROOT / name}")
+        for name in AGENT_LINKS:
+            print(f"Back up if necessary, then link {target / name} -> {ROOT / AGENTS_MD}")
         print("macOS and Terminal preferences are separate opt-in commands; see README.md")
         return
     brew = None
@@ -143,6 +148,8 @@ def main():
             run("swiftc", watcher.with_suffix(".swift"), "-o", watcher)
     for name in FILES:
         installer.link(name)
+    for name in AGENT_LINKS:
+        installer.link(name, AGENTS_MD)
     if not args.link_only:
         run(sys.executable, ROOT / "scripts/doctor.py", "--target", target,
             "--vim", vim)
