@@ -22,6 +22,10 @@ setopt HIST_SAVE_NO_DUPS
 # Skip repeated results when searching history in the line editor.
 setopt HIST_FIND_NO_DUPS
 
+# Up/Down Arrow only cycle through history entries starting with what's typed.
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+
 # List all files/folders (ls) after a cd
 list_after_cd() {
   ls

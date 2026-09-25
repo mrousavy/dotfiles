@@ -43,6 +43,8 @@ zstyle -a ':completion:*' menu selection
 [[ "$selection" == select ]] || exit 1
 [[ ${aliases[..]} == 'cd ..' && ${aliases[...]} == 'cd ../..' ]] || exit 1
 [[ ${aliases[....]} == 'cd ../../..' ]] || exit 1
+[[ $(bindkey '^[[A') == *' history-beginning-search-backward' ]] || exit 1
+[[ $(bindkey '^[[B') == *' history-beginning-search-forward' ]] || exit 1
 '''
         env = dict(os.environ, ZDOTDIR=str(scratch))
         subprocess.run(["/bin/zsh", "-dfic", shell_check, "dotfiles-check", str(target / ".zshrc")],
