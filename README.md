@@ -151,8 +151,16 @@ The separate Vim colorscheme supplies One Light/Dark inside the editor.
 Each changed preference domain is backed up first in
 `~/.local/state/dotfiles/backups/<timestamp>/<domain>.plist`. Keep these backups
 local; they contain the previous preferences for that Mac. Only the settings
-listed above are restored by this repository. Magnet and other personal apps
-are not prerequisites for these dotfiles.
+listed above are restored by this repository.
+
+## Recommended apps
+
+`install.sh` does not install these, and the dotfiles work without them.
+
+| App | What it does | Install |
+| --- | --- | --- |
+| [LinearMouse](https://linearmouse.org) | Per-device mouse settings, such as scroll direction and pointer acceleration | `brew install --cask linearmouse` |
+| [Magnet](https://apps.apple.com/app/id441258766) | Snap windows into halves, thirds and quarters with shortcuts or by dragging | Mac App Store |
 
 ## Backups, local changes, and repeat runs
 
