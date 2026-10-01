@@ -62,7 +62,7 @@ if Apple's bundled Vim is older. The installer checks the required features.
 | zsh | Minimal adaptive palette: gray folder, blue accents, green strings, red errors; bold input; centered greeting; `ls` after changing directories; `..`, `...`, `....` aliases |
 | Completion | Case-insensitive Tab matching, highlighted selection, arrow-key navigation |
 | zsh plugins | Homebrew's zsh-autosuggestions and zsh-syntax-highlighting |
-| History | Up/Down Arrow only step through commands that start with the typed text; keep the newest occurrence of each command; skip duplicate search results and saved entries |
+| History | Up/Down Arrow step through commands that start with the typed text and place the cursor at the end; keep the newest occurrence of each command; skip duplicate search results and saved entries |
 | Login banner | `.hushlogin` hides “Last login” |
 | Global Git ignore | `.DS_Store`, Vim swap files (`.*.sw?`), and Vim undo files (`*.un~`) |
 | Agent instructions | One global instructions file for Claude Code and Codex, `~/.config/ai/AGENTS.md` |
